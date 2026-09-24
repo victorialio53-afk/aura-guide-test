@@ -1,101 +1,268 @@
-const messageElement =
-    document.getElementById("auri-message");
+const CONFIG = {
+  registerUrl: "https://forms.yandex.ru/cloud/6aa4274e90fa7b6d13660f66",
+
+  auri3dUrl: "https://victorialio53-afk.github.io/aura-3d-viewer/"
+};
 
 
-const typingIndicator =
-    document.getElementById("typing-indicator");
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* ========================= */
+  /* ТЕКУЩИЙ ГОД */
+  /* ========================= */
+
+  const yearNode =
+    document.getElementById("currentYear");
+
+  if (yearNode) {
+    yearNode.textContent =
+      new Date().getFullYear();
+  }
 
 
 
-const auriMessages = [
+  /* ========================= */
+  /* ССЫЛКА НА РЕГИСТРАЦИЮ */
+  /* ========================= */
+
+  const registerLinks =
+    document.querySelectorAll(
+      "[data-register-link]"
+    );
+
+  registerLinks.forEach((link) => {
+    link.href = CONFIG.registerUrl;
+  });
+
+
+
+  /* ========================= */
+  /* ССЫЛКА НА 3D AURI */
+  /* ========================= */
+
+  const auri3dLinks =
+    document.querySelectorAll(
+      "[data-auri-3d-link]"
+    );
+
+  auri3dLinks.forEach((link) => {
+    link.href = CONFIG.auri3dUrl;
+  });
+
+
+
+  /* ========================= */
+  /* РЕПЛИКИ AURI */
+  /* ========================= */
+
+  const auriMessage =
+    document.querySelector(
+      ".assistant-message"
+    );
+
+
+  const auriMessages = [
 
     "Привет, пользователь. Я помогу тебе пройти путь AURA.",
 
-    "Регистрация уже открыта. Сейчас твоя главная задача — подключиться к форуму.",
+    "Регистрация уже открыта. Сейчас твоя главная задача — зарегистрироваться на форум.",
 
     "После регистрации система переведёт тебя к этапу формирования команды.",
 
     "Задания и расписание появятся здесь, когда система откроет доступ.",
 
-    "Ты можешь открыть мою 3D-модель и рассмотреть меня поближе."
+    "Если хочешь рассмотреть меня поближе — открой мою 3D-модель.",
 
-];
+    "Следи за системой. Новые данные будут появляться здесь постепенно."
 
-
-let currentMessageIndex = 0;
-
+  ];
 
 
-function showNextAuriMessage() {
-
-    messageElement.classList.add(
-        "message-hidden"
-    );
+  let currentMessageIndex = 0;
 
 
-    setTimeout(() => {
+  if (auriMessage) {
 
-        messageElement.style.display =
-            "none";
+    auriMessage.style.transition =
+      "opacity 0.25s ease";
 
 
-        typingIndicator.classList.add(
-            "active"
-        );
+    function showNextAuriMessage() {
+
+      /* сначала плавно скрываем текст */
+
+      auriMessage.style.opacity = "0";
+
+
+      setTimeout(() => {
+
+        /* имитация печати */
+
+        auriMessage.textContent = "● ● ●";
+
+        auriMessage.style.opacity = "1";
 
 
         setTimeout(() => {
 
-            typingIndicator.classList.remove(
-                "active"
-            );
+          auriMessage.style.opacity = "0";
 
+
+          setTimeout(() => {
 
             currentMessageIndex =
-                (
-                    currentMessageIndex + 1
-                )
-                %
-                auriMessages.length;
+              (
+                currentMessageIndex + 1
+              ) % auriMessages.length;
 
 
-            messageElement.textContent =
-                auriMessages[
-                    currentMessageIndex
-                ];
+            auriMessage.textContent =
+              auriMessages[
+                currentMessageIndex
+              ];
 
 
-            messageElement.style.display =
-                "block";
+            auriMessage.style.opacity =
+              "1";
+
+          }, 220);
+
+        }, 750);
+
+      }, 250);
+
+    }
 
 
-            requestAnimationFrame(() => {
+    /* новая реплика каждые 6.5 секунд */
 
-                messageElement.classList.remove(
-                    "message-hidden"
-                );
+    setInterval(
+      showNextAuriMessage,
+      6500
+    );
 
-            });
-
-
-        }, 900);
-
-
-    }, 220);
-
-}
-
-
-
-/* новая реплика примерно раз в 6.5 секунд */
-
-setInterval(
-    showNextAuriMessage,
-    6500
-);
+  }
 
 
 
-console.log(
+  /* ========================= */
+  /* ЧЕК-ЛИСТ */
+  /* ========================= */
+
+  const checklistKey =
+    "aura-checklist-progress";
+
+
+  const items =
+    Array.from(
+      document.querySelectorAll(
+        ".check-item"
+      )
+    );
+
+
+  const counter =
+    document.getElementById(
+      "checkCounter"
+    );
+
+
+  let saved = [];
+
+
+  try {
+
+    saved =
+      JSON.parse(
+        localStorage.getItem(
+          checklistKey
+        )
+      ) || [];
+
+  } catch (error) {
+
+    saved = [];
+
+  }
+
+
+
+  function updateChecklist() {
+
+    let doneCount = 0;
+
+
+    items.forEach(
+      (item, index) => {
+
+        const isDone =
+          Boolean(
+            saved[index]
+          );
+
+
+        item.classList.toggle(
+          "is-done",
+          isDone
+        );
+
+
+        if (isDone) {
+          doneCount += 1;
+        }
+
+      }
+    );
+
+
+    if (counter) {
+
+      counter.textContent =
+        `${doneCount} / ${items.length}`;
+
+    }
+
+  }
+
+
+
+  items.forEach(
+    (item, index) => {
+
+      item.addEventListener(
+        "click",
+        () => {
+
+          saved[index] =
+            !saved[index];
+
+
+          localStorage.setItem(
+            checklistKey,
+            JSON.stringify(saved)
+          );
+
+
+          updateChecklist();
+
+        }
+      );
+
+    }
+  );
+
+
+  updateChecklist();
+
+
+
+  /* ========================= */
+  /* SYSTEM LOG */
+  /* ========================= */
+
+  console.log(
     "AURA.SYSTEM / AURI ONLINE"
-);
+  );
+
+});
