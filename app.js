@@ -1,96 +1,129 @@
-const homeScreen =
-    document.getElementById("home-screen");
-
-const startScreen =
-    document.getElementById("start-screen");
-
-const pathScreen =
-    document.getElementById("path-screen");
+const journeyButton =
+    document.getElementById("go-to-journey");
 
 
-const openStartButton =
-    document.getElementById("open-start");
-
-const openPathButton =
-    document.getElementById("open-path");
+const journey =
+    document.getElementById("journey");
 
 
-const backHomeStartButton =
-    document.getElementById("back-home-start");
+const messageElement =
+    document.getElementById("auri-message");
 
-const backHomePathButton =
-    document.getElementById("back-home-path");
+
+const typingIndicator =
+    document.getElementById("typing-indicator");
 
 
 
-function showScreen(screen) {
+/* ========================= */
+/* ПЕРЕХОД К КАРТЕ */
+/* ========================= */
 
-    const screens =
-        document.querySelectorAll(".screen");
+journeyButton.addEventListener(
+    "click",
+    () => {
+
+        journey.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+);
 
 
-    screens.forEach((item) => {
 
-        item.classList.remove("active");
+/* ========================= */
+/* РЕПЛИКИ AURI */
+/* ========================= */
 
-    });
+const auriMessages = [
+
+    "Привет, пользователь. Я помогу тебе пройти путь AURA.",
+
+    "Следи за системой. Новые уровни будут открываться постепенно.",
+
+    "Задания, расписание и новые данные появятся здесь, когда придет время.",
+
+    "Если хочешь рассмотреть меня поближе — открой мою 3D-модель."
+
+];
 
 
-    screen.classList.add("active");
+let currentMessageIndex = 0;
 
 
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+
+function showNextAuriMessage() {
+
+    messageElement.classList.add(
+        "message-hidden"
+    );
+
+
+    setTimeout(() => {
+
+        messageElement.style.display =
+            "none";
+
+
+        typingIndicator.classList.add(
+            "active"
+        );
+
+
+        setTimeout(() => {
+
+            typingIndicator.classList.remove(
+                "active"
+            );
+
+
+            currentMessageIndex =
+                (
+                    currentMessageIndex + 1
+                )
+                %
+                auriMessages.length;
+
+
+            messageElement.textContent =
+                auriMessages[
+                    currentMessageIndex
+                ];
+
+
+            messageElement.style.display =
+                "block";
+
+
+            requestAnimationFrame(() => {
+
+                messageElement.classList.remove(
+                    "message-hidden"
+                );
+
+            });
+
+
+        }, 900);
+
+
+    }, 250);
+
 }
 
 
 
-openStartButton.addEventListener(
-    "click",
-    () => {
+/* Новая реплика примерно раз в 6 секунд */
 
-        showScreen(startScreen);
-
-    }
-);
-
-
-
-openPathButton.addEventListener(
-    "click",
-    () => {
-
-        showScreen(pathScreen);
-
-    }
-);
-
-
-
-backHomeStartButton.addEventListener(
-    "click",
-    () => {
-
-        showScreen(homeScreen);
-
-    }
-);
-
-
-
-backHomePathButton.addEventListener(
-    "click",
-    () => {
-
-        showScreen(homeScreen);
-
-    }
+setInterval(
+    showNextAuriMessage,
+    6000
 );
 
 
 
 console.log(
-    "AURA.SYSTEM / GUIDE INITIALIZED"
+    "AURA.SYSTEM / USER JOURNEY INITIALIZED"
 );
