@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <title>AURA GUIDE</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 </head>
+
 
 <body>
 
     <main class="app">
+
+
+        <!-- ОБЩАЯ ШАПКА -->
 
         <header class="system-header">
 
@@ -22,8 +34,15 @@
             >
 
             <div class="system-line">
-                <span>AURA.SYSTEM</span>
-                <span class="online">● ONLINE</span>
+
+                <span>
+                    AURA.SYSTEM
+                </span>
+
+                <span class="online">
+                    ● ONLINE
+                </span>
+
             </div>
 
             <div class="system-subtitle">
@@ -33,80 +52,283 @@
         </header>
 
 
-        <section class="welcome">
 
-            <img
-    src="assets/auri.png"
-    alt="AURI"
-    class="welcome-auri"
->
-            
-            <div class="section-number">
-                SYSTEM / 01
-            </div>
+        <!-- ========================= -->
+        <!-- ГЛАВНЫЙ ЭКРАН -->
+        <!-- ========================= -->
 
-            <h1>
-                ПРИВЕТ,<br>
-                ПОЛЬЗОВАТЕЛЬ.
-            </h1>
+        <section
+            class="screen active"
+            id="home-screen"
+        >
 
-            <p>
-                Система навигации форума для первокурсников AURA.
-            </p>
+            <section class="welcome">
 
-            <div class="user-status">
-                <span>USER STATUS</span>
-                <strong>ПЕРВОКУРСНИК</strong>
-            </div>
+                <img
+                    src="assets/auri.png"
+                    alt="AURI"
+                    class="welcome-auri"
+                >
+
+
+                <div class="section-number">
+                    SYSTEM / 01
+                </div>
+
+
+                <h1>
+                    ПРИВЕТ,<br>
+                    ПОЛЬЗОВАТЕЛЬ.
+                </h1>
+
+
+                <p>
+                    Система навигации форума для первокурсников AURA.
+                </p>
+
+
+                <div class="user-status">
+
+                    <span>
+                        USER STATUS
+                    </span>
+
+                    <strong>
+                        ПЕРВОКУРСНИК
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- МЕНЮ -->
+
+            <nav class="menu">
+
+                <button
+                    class="menu-button"
+                    id="open-start"
+                >
+
+                    <span>
+                        01 / СТАРТ
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+                <button class="menu-button">
+
+                    <span>
+                        02 / МОЙ ПУТЬ
+                    </span>
+
+                    <span>
+                        →
+                    </span>
+
+                </button>
+
+
+                <button class="menu-button">
+
+                    <span>
+                        03 / ЧЕК-ЛИСТ
+                    </span>
+
+                    <span>
+                        0 / 8
+                    </span>
+
+                </button>
+
+
+                <button class="menu-button locked">
+
+                    <span>
+                        04 / ЗАДАНИЯ
+                    </span>
+
+                    <span>
+                        ОЖИДАНИЕ
+                    </span>
+
+                </button>
+
+
+                <button class="menu-button locked">
+
+                    <span>
+                        05 / РАСПИСАНИЕ
+                    </span>
+
+                    <span>
+                        ОЖИДАНИЕ
+                    </span>
+
+                </button>
+
+            </nav>
+
+
+
+            <!-- AURI PANEL -->
+
+            <section class="auri-panel">
+
+                <div>
+
+                    <small>
+                        VIRTUAL ASSISTANT
+                    </small>
+
+                    <strong>
+                        AURI
+                    </strong>
+
+                </div>
+
+
+                <span>
+                    STATUS / ONLINE
+                </span>
+
+            </section>
+
+
+
+            <footer>
+                AURA / RUDN / 2026
+            </footer>
 
         </section>
 
 
-        <nav class="menu">
 
-            <button>
-                <span>01 / СТАРТ</span>
-                <span>→</span>
+        <!-- ========================= -->
+        <!-- ЭКРАН СТАРТ -->
+        <!-- ========================= -->
+
+        <section
+            class="screen"
+            id="start-screen"
+        >
+
+
+            <button
+                class="back-button"
+                id="back-home"
+            >
+                ← НАЗАД
             </button>
 
-            <button>
-                <span>02 / МОЙ ПУТЬ</span>
-                <span>→</span>
-            </button>
 
-            <button>
-                <span>03 / ЧЕК-ЛИСТ</span>
-                <span>0 / 8</span>
-            </button>
+            <div class="start-header">
 
-            <button class="locked">
-                <span>04 / ЗАДАНИЯ</span>
-                <span>ОЖИДАНИЕ</span>
-            </button>
-
-            <button class="locked">
-                <span>05 / РАСПИСАНИЕ</span>
-                <span>ОЖИДАНИЕ</span>
-            </button>
-
-        </nav>
+                <div class="section-number">
+                    01 / START
+                </div>
 
 
-        <section class="auri-panel">
+                <h2>
+                    ФОРУМ<br>
+                    ПЕРВОКУРСНИКОВ
+                </h2>
 
-            <div>
-                <small>VIRTUAL ASSISTANT</small>
-                <strong>AURI</strong>
+
+                <div class="forum-name">
+                    AURA
+                </div>
+
             </div>
 
-            <span>STATUS / ONLINE</span>
+
+
+            <!-- ДАТЫ -->
+
+            <div class="date-panel">
+
+                <span>
+                    DATE
+                </span>
+
+                <strong>
+                    24–25 ОКТЯБРЯ
+                </strong>
+
+            </div>
+
+
+
+            <!-- ОПИСАНИЕ -->
+
+            <section class="start-description">
+
+                <div class="data-label">
+                    SYSTEM INFORMATION
+                </div>
+
+
+                <p>
+                    Здесь ты попадешь в команду с другими первокурсниками из разных факультетов, познакомишься с кураторами и Студенческим советом, узнаешь, как устроена студенческая жизнь, и попробуешь себя в командной работе.
+                </p>
+
+            </section>
+
+
+
+            <!-- ДОСТУП -->
+
+            <section class="access-panel">
+
+                <div class="access-top">
+
+                    <span>
+                        ACCESS STATUS
+                    </span>
+
+                    <span class="access-open">
+                        ● OPEN
+                    </span>
+
+                </div>
+
+
+                <div class="access-title">
+                    ОТКРЫТО ДЛЯ ВСЕХ<br>
+                    ПЕРВОКУРСНИКОВ
+                </div>
+
+            </section>
+
+
+
+            <div class="system-note">
+
+                <span>
+                    AURA.SYSTEM
+                </span>
+
+                <span>
+                    CONNECTION STABLE
+                </span>
+
+            </div>
+
+
+
+            <footer>
+                AURA / RUDN / 2026
+            </footer>
 
         </section>
 
-
-        <footer>
-            AURA / RUDN / 2026
-        </footer>
 
     </main>
 
@@ -114,4 +336,5 @@
     <script src="app.js"></script>
 
 </body>
+
 </html>
