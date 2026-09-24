@@ -4,11 +4,22 @@ const homeScreen =
 const startScreen =
     document.getElementById("start-screen");
 
+const pathScreen =
+    document.getElementById("path-screen");
+
+
 const openStartButton =
     document.getElementById("open-start");
 
-const backHomeButton =
-    document.getElementById("back-home");
+const openPathButton =
+    document.getElementById("open-path");
+
+
+const backHomeStartButton =
+    document.getElementById("back-home-start");
+
+const backHomePathButton =
+    document.getElementById("back-home-path");
 
 
 
@@ -47,7 +58,29 @@ openStartButton.addEventListener(
 
 
 
-backHomeButton.addEventListener(
+openPathButton.addEventListener(
+    "click",
+    () => {
+
+        showScreen(pathScreen);
+
+    }
+);
+
+
+
+backHomeStartButton.addEventListener(
+    "click",
+    () => {
+
+        showScreen(homeScreen);
+
+    }
+);
+
+
+
+backHomePathButton.addEventListener(
     "click",
     () => {
 
