@@ -147,6 +147,8 @@ body {
 
 .welcome {
     position: relative;
+    
+    z-index: 2;
 
     padding: 72px 0 36px;
 
