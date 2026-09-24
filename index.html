@@ -11,20 +11,33 @@
 
     <title>AURA GUIDE</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 </head>
 
 
 <body>
 
+
+    <!-- ДЕКОРАТИВНЫЙ СЛОЙ -->
+
+    <div class="decor-layer" aria-hidden="true">
+
+        <span class="decor-cross cross-1"></span>
+        <span class="decor-cross cross-2"></span>
+        <span class="decor-cross cross-3"></span>
+        <span class="decor-cross cross-4"></span>
+        <span class="decor-cross cross-5"></span>
+        <span class="decor-cross cross-6"></span>
+
+    </div>
+
+
+
     <main class="app">
 
 
         <!-- ========================= -->
-        <!-- SYSTEM HEADER -->
+        <!-- HEADER -->
         <!-- ========================= -->
 
         <header class="system-header">
@@ -34,6 +47,7 @@
                 alt="AURA"
                 class="aura-logo"
             >
+
 
             <div class="system-line">
 
@@ -47,6 +61,7 @@
 
             </div>
 
+
             <div class="system-subtitle">
                 USER JOURNEY / GUIDE INTERFACE
             </div>
@@ -56,16 +71,10 @@
 
 
         <!-- ========================= -->
-        <!-- HERO / AURI -->
+        <!-- HERO -->
         <!-- ========================= -->
 
         <section class="hero">
-
-            <img
-                src="assets/auri.png"
-                alt="AURI"
-                class="hero-auri"
-            >
 
 
             <div class="section-number">
@@ -75,64 +84,102 @@
 
             <h1>
                 ПРИВЕТ,<br>
-                ПОЛЬЗОВАТЕЛЬ.
+                ПОЛЬЗОВАТЕЛЬ
             </h1>
 
 
             <p class="hero-description">
                 Ты подключен к системе навигации форума
-                для первокурсников AURA.
+                для первокурсников AURA
             </p>
 
 
 
-            <!-- РЕПЛИКА AURI -->
+            <!-- ========================= -->
+            <!-- AURI ZONE -->
+            <!-- ========================= -->
 
-            <section class="auri-message-box">
-
-                <div class="auri-message-top">
-
-                    <span>
-                        AURI / VIRTUAL ASSISTANT
-                    </span>
-
-                    <span class="auri-status">
-                        ● ONLINE
-                    </span>
-
-                </div>
+            <section class="assistant-zone">
 
 
-                <div class="auri-message-content">
+                <!-- ФУТУРИСТИЧНАЯ ПОДЛОЖКА -->
 
-                    <p id="auri-message">
-                        Привет, пользователь. Я помогу тебе пройти путь AURA.
-                    </p>
+                <div class="auri-message-panel">
+
+                    <div class="auri-message-inner">
+
+                        <div class="auri-message-label">
+                            AURI / VIRTUAL ASSISTANT
+                        </div>
 
 
-                    <div
-                        class="typing-indicator"
-                        id="typing-indicator"
-                        aria-hidden="true"
-                    >
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <div class="auri-message-content">
+
+                            <p id="auri-message">
+                                Привет, пользователь. Я помогу тебе пройти путь AURA.
+                            </p>
+
+
+                            <div
+                                class="typing-indicator"
+                                id="typing-indicator"
+                                aria-hidden="true"
+                            >
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+
+                        </div>
+
                     </div>
 
                 </div>
 
 
-                <a
-                    class="auri-3d-button"
-                    href="https://victorialio53-afk.github.io/aura-3d-viewer/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+
+                <!-- AURI -->
+
+                <img
+                    src="assets/auri.png"
+                    alt="AURI"
+                    class="hero-auri"
                 >
-                    ПОСМОТРЕТЬ 3D AURI ↗
-                </a>
+
+
+
+                <!-- СИСТЕМНЫЕ КВАДРАТЫ -->
+
+                <div
+                    class="signal-rail"
+                    aria-hidden="true"
+                >
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span class="active"></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
 
             </section>
+
+
+
+            <!-- 3D AURI -->
+
+            <a
+                class="text-link"
+                href="https://victorialio53-afk.github.io/aura-3d-viewer/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ПОСМОТРЕТЬ 3D AURI
+            </a>
+
 
         </section>
 
@@ -144,13 +191,13 @@
 
         <section class="objective-panel">
 
-            <div class="objective-top">
+            <div class="objective-meta">
 
                 <span>
                     CURRENT OBJECTIVE
                 </span>
 
-                <span class="objective-status">
+                <span class="objective-active">
                     ● ACTIVE
                 </span>
 
@@ -158,35 +205,40 @@
 
 
             <h2>
-                ИЗУЧИ ПУТЬ AURA
+                ЗАРЕГИСТРИРОВАТЬСЯ
+                НА ФОРУМ
             </h2>
 
 
             <p>
-                Ниже находится твоя карта прохождения системы.
-                Новые уровни будут открываться постепенно.
+                Регистрация уже открыта.
+                После неё система переведёт тебя
+                к следующему этапу пути AURA.
             </p>
 
 
-            <button
-                class="system-button"
-                id="go-to-journey"
+            <a
+                class="action-button"
+                href="https://forms.yandex.ru/cloud/6aa4274e90fa7b6d13660f66"
+                target="_blank"
+                rel="noopener noreferrer"
             >
-                ОТКРЫТЬ КАРТУ ↓
-            </button>
+                ЗАРЕГИСТРИРОВАТЬСЯ
+            </a>
 
         </section>
 
 
 
         <!-- ========================= -->
-        <!-- USER JOURNEY -->
+        <!-- JOURNEY -->
         <!-- ========================= -->
 
         <section
             class="journey"
             id="journey"
         >
+
 
             <div class="journey-heading">
 
@@ -220,7 +272,6 @@
                 <div class="level-marker">
 
                     <span class="level-dot"></span>
-
                     <span class="level-line"></span>
 
                 </div>
@@ -261,7 +312,7 @@
 
 
 
-                    <!-- ФОТО -->
+                    <!-- ARCHIVE -->
 
                     <div class="archive-header">
 
@@ -319,12 +370,11 @@
             <!-- LEVEL 01 -->
             <!-- ========================= -->
 
-            <article class="level waiting">
+            <article class="level active-level">
 
                 <div class="level-marker">
 
                     <span class="level-dot"></span>
-
                     <span class="level-line"></span>
 
                 </div>
@@ -338,8 +388,8 @@
                             LEVEL 01
                         </span>
 
-                        <span>
-                            WAITING
+                        <span class="status-active">
+                            ACTIVE
                         </span>
 
                     </div>
@@ -352,16 +402,18 @@
 
                     <p class="level-text">
                         Первый шаг перед началом прохождения форума.
-                        Когда регистрация будет доступна, ссылка появится здесь.
+                        Регистрация уже открыта.
                     </p>
 
 
-                    <button
-                        class="system-button disabled-button"
-                        disabled
+                    <a
+                        class="action-button compact-button"
+                        href="https://forms.yandex.ru/cloud/6aa4274e90fa7b6d13660f66"
+                        target="_blank"
+                        rel="noopener noreferrer"
                     >
-                        ДОСТУП ПОКА ЗАКРЫТ
-                    </button>
+                        ЗАРЕГИСТРИРОВАТЬСЯ
+                    </a>
 
                 </div>
 
@@ -378,7 +430,6 @@
                 <div class="level-marker">
 
                     <span class="level-dot"></span>
-
                     <span class="level-line"></span>
 
                 </div>
@@ -411,7 +462,7 @@
                     </p>
 
 
-                    <div class="system-lock">
+                    <div class="data-status">
                         DATA / WAITING FOR ACTIVATION
                     </div>
 
@@ -430,7 +481,6 @@
                 <div class="level-marker">
 
                     <span class="level-dot"></span>
-
                     <span class="level-line"></span>
 
                 </div>
@@ -462,7 +512,7 @@
                     </p>
 
 
-                    <div class="system-lock">
+                    <div class="data-status">
                         ACCESS / NOT AVAILABLE
                     </div>
 
@@ -481,7 +531,6 @@
                 <div class="level-marker">
 
                     <span class="level-dot"></span>
-
                     <span class="level-line"></span>
 
                 </div>
@@ -518,7 +567,7 @@
                     </p>
 
 
-                    <div class="system-lock">
+                    <div class="data-status">
                         SCHEDULE / WAITING FOR DATA
                     </div>
 
@@ -535,9 +584,7 @@
             <article class="level locked last-level">
 
                 <div class="level-marker">
-
                     <span class="level-dot"></span>
-
                 </div>
 
 
@@ -572,13 +619,14 @@
                     </p>
 
 
-                    <div class="system-lock">
+                    <div class="data-status">
                         ACCESS / NOT AVAILABLE
                     </div>
 
                 </div>
 
             </article>
+
 
         </section>
 
@@ -589,6 +637,7 @@
         <!-- ========================= -->
 
         <section class="modules">
+
 
             <div class="modules-header">
 
@@ -601,6 +650,7 @@
                 </span>
 
             </div>
+
 
 
             <div class="module-card inactive-module">
@@ -617,11 +667,13 @@
 
                 </div>
 
+
                 <span>
                     SOON
                 </span>
 
             </div>
+
 
 
             <a
@@ -643,8 +695,9 @@
 
                 </div>
 
+
                 <span>
-                    OPEN ↗
+                    OPEN
                 </span>
 
             </a>
