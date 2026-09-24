@@ -1,67 +1,101 @@
-const CONFIG = {
-  registerUrl: "https://forms.yandex.ru/cloud/6aa4274e90fa7b6d13660f66",
-  // сюда вставь свою ссылку на отдельный 3D AURI, если нужно
-  // пример: "https://victorialio53-afk.github.io/your-3d-page/"
-  auri3dUrl: "#"
-};
+const messageElement =
+    document.getElementById("auri-message");
 
-document.addEventListener("DOMContentLoaded", () => {
-  // текущий год
-  const yearNode = document.getElementById("currentYear");
-  if (yearNode) {
-    yearNode.textContent = new Date().getFullYear();
-  }
 
-  // регистрация
-  const registerLinks = document.querySelectorAll("[data-register-link]");
-  registerLinks.forEach((link) => {
-    link.href = CONFIG.registerUrl;
-  });
+const typingIndicator =
+    document.getElementById("typing-indicator");
 
-  // 3D AURI
-  const auri3dLinks = document.querySelectorAll("[data-auri-3d-link]");
-  auri3dLinks.forEach((link) => {
-    link.href = CONFIG.auri3dUrl;
-  });
 
-  // чек-лист
-  const checklistKey = "aura-checklist-progress";
-  const items = Array.from(document.querySelectorAll(".check-item"));
-  const counter = document.getElementById("checkCounter");
 
-  let saved = [];
+const auriMessages = [
 
-  try {
-    saved = JSON.parse(localStorage.getItem(checklistKey)) || [];
-  } catch (error) {
-    saved = [];
-  }
+    "Привет, пользователь. Я помогу тебе пройти путь AURA.",
 
-  function updateChecklist() {
-    let doneCount = 0;
+    "Регистрация уже открыта. Сейчас твоя главная задача — подключиться к форуму.",
 
-    items.forEach((item, index) => {
-      const isDone = Boolean(saved[index]);
+    "После регистрации система переведёт тебя к этапу формирования команды.",
 
-      item.classList.toggle("is-done", isDone);
+    "Задания и расписание появятся здесь, когда система откроет доступ.",
 
-      if (isDone) {
-        doneCount += 1;
-      }
-    });
+    "Ты можешь открыть мою 3D-модель и рассмотреть меня поближе."
 
-    if (counter) {
-      counter.textContent = `${doneCount} / ${items.length}`;
-    }
-  }
+];
 
-  items.forEach((item, index) => {
-    item.addEventListener("click", () => {
-      saved[index] = !saved[index];
-      localStorage.setItem(checklistKey, JSON.stringify(saved));
-      updateChecklist();
-    });
-  });
 
-  updateChecklist();
-});
+let currentMessageIndex = 0;
+
+
+
+function showNextAuriMessage() {
+
+    messageElement.classList.add(
+        "message-hidden"
+    );
+
+
+    setTimeout(() => {
+
+        messageElement.style.display =
+            "none";
+
+
+        typingIndicator.classList.add(
+            "active"
+        );
+
+
+        setTimeout(() => {
+
+            typingIndicator.classList.remove(
+                "active"
+            );
+
+
+            currentMessageIndex =
+                (
+                    currentMessageIndex + 1
+                )
+                %
+                auriMessages.length;
+
+
+            messageElement.textContent =
+                auriMessages[
+                    currentMessageIndex
+                ];
+
+
+            messageElement.style.display =
+                "block";
+
+
+            requestAnimationFrame(() => {
+
+                messageElement.classList.remove(
+                    "message-hidden"
+                );
+
+            });
+
+
+        }, 900);
+
+
+    }, 220);
+
+}
+
+
+
+/* новая реплика примерно раз в 6.5 секунд */
+
+setInterval(
+    showNextAuriMessage,
+    6500
+);
+
+
+
+console.log(
+    "AURA.SYSTEM / AURI ONLINE"
+);
