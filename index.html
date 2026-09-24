@@ -123,7 +123,10 @@
                 </button>
 
 
-                <button class="menu-button">
+                <button
+                    class="menu-button"
+                    id="open-path"
+                >
 
                     <span>
                         02 / МОЙ ПУТЬ
@@ -220,10 +223,9 @@
             id="start-screen"
         >
 
-
             <button
                 class="back-button"
-                id="back-home"
+                id="back-home-start"
             >
                 ← НАЗАД
             </button>
@@ -283,7 +285,7 @@
 
 
 
-            <!-- ФОТО С ПРОШЛОГО ФОРУМА -->
+            <!-- ФОТО -->
 
             <section class="forum-gallery">
 
@@ -303,26 +305,32 @@
                 <div class="gallery-grid">
 
                     <div class="gallery-item gallery-main">
+
                         <img
                             src="assets/forum-1.jpg"
                             alt="Фото с прошлого форума"
                         >
+
                     </div>
 
 
                     <div class="gallery-item">
+
                         <img
                             src="assets/forum-2.jpg"
                             alt="Фото с прошлого форума"
                         >
+
                     </div>
 
 
                     <div class="gallery-item">
+
                         <img
                             src="assets/forum-3.jpg"
                             alt="Фото с прошлого форума"
                         >
+
                     </div>
 
                 </div>
@@ -368,6 +376,285 @@
                 </span>
 
             </div>
+
+
+
+            <footer>
+                AURA / RUDN / 2026
+            </footer>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- ЭКРАН МОЙ ПУТЬ -->
+        <!-- ========================= -->
+
+        <section
+            class="screen"
+            id="path-screen"
+        >
+
+            <button
+                class="back-button"
+                id="back-home-path"
+            >
+                ← НАЗАД
+            </button>
+
+
+            <div class="path-header">
+
+                <div class="section-number">
+                    02 / MY PATH
+                </div>
+
+
+                <h2>
+                    ТВОЙ ПУТЬ<br>
+                    В СИСТЕМЕ AURA
+                </h2>
+
+
+                <div class="path-label">
+                    USER PROGRESS
+                </div>
+
+            </div>
+
+
+
+            <!-- ЛИНИЯ ПУТИ -->
+
+            <section class="timeline">
+
+
+                <!-- 01 -->
+
+                <article class="timeline-item active-stage">
+
+                    <div class="timeline-marker">
+
+                        <span class="timeline-dot"></span>
+
+                        <span class="timeline-line"></span>
+
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <div class="timeline-number">
+                            01
+                        </div>
+
+                        <h3>
+                            РЕГИСТРАЦИЯ
+                        </h3>
+
+                        <p>
+                            Первый шаг в системе AURA.
+                        </p>
+
+
+                        <div class="stage-status active">
+                            STATUS / ACTIVE
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 02 -->
+
+                <article class="timeline-item">
+
+                    <div class="timeline-marker">
+
+                        <span class="timeline-dot"></span>
+
+                        <span class="timeline-line"></span>
+
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <div class="timeline-number">
+                            02
+                        </div>
+
+                        <h3>
+                            КОМАНДА
+                        </h3>
+
+                        <p>
+                            После регистрации ты попадешь в команду с первокурсниками из разных факультетов.
+                        </p>
+
+
+                        <div class="stage-status">
+                            STATUS / WAITING
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 03 -->
+
+                <article class="timeline-item">
+
+                    <div class="timeline-marker">
+
+                        <span class="timeline-dot"></span>
+
+                        <span class="timeline-line"></span>
+
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <div class="timeline-number">
+                            03
+                        </div>
+
+                        <h3>
+                            ЗАДАНИЯ
+                        </h3>
+
+                        <p>
+                            Командные задания появятся здесь, когда система откроет следующий этап.
+                        </p>
+
+
+                        <div class="stage-status locked-status">
+                            STATUS / LOCKED
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 04 -->
+
+                <article class="timeline-item">
+
+                    <div class="timeline-marker">
+
+                        <span class="timeline-dot"></span>
+
+                        <span class="timeline-line"></span>
+
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <div class="timeline-number">
+                            04
+                        </div>
+
+                        <h3>
+                            НЕВЫЕЗДНОЙ ЭТАП
+                        </h3>
+
+                        <div class="timeline-date">
+                            24–25 ОКТЯБРЯ
+                        </div>
+
+                        <p>
+                            Два дня знакомства, командной работы и погружения в студенческую жизнь РУДН.
+                        </p>
+
+
+                        <div class="stage-status">
+                            STATUS / WAITING
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- 05 -->
+
+                <article class="timeline-item last">
+
+                    <div class="timeline-marker">
+
+                        <span class="timeline-dot"></span>
+
+                    </div>
+
+
+                    <div class="timeline-content">
+
+                        <div class="timeline-number">
+                            05
+                        </div>
+
+                        <h3>
+                            ВЫЕЗДНОЙ ЭТАП
+                        </h3>
+
+                        <div class="timeline-date">
+                            II СЕМЕСТР
+                        </div>
+
+                        <p>
+                            Следующий уровень AURA.
+                        </p>
+
+
+                        <div class="stage-status locked-status">
+                            STATUS / NOT AVAILABLE
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+
+            <!-- НИЖНИЙ СИСТЕМНЫЙ БЛОК -->
+
+            <section class="journey-panel">
+
+                <div class="journey-top">
+
+                    <span>
+                        AURA.SYSTEM
+                    </span>
+
+                    <span class="journey-active">
+                        ● ACTIVE
+                    </span>
+
+                </div>
+
+
+                <div class="journey-title">
+                    USER JOURNEY
+                </div>
+
+
+                <p>
+                    Система будет обновлять твой путь по мере прохождения этапов форума.
+                </p>
+
+            </section>
 
 
 
