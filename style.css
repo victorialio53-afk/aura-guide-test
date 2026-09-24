@@ -6,7 +6,6 @@
 
 
 :root {
-
     --bg: #0b0b0d;
     --panel: #111114;
 
@@ -20,29 +19,22 @@
 
 
 
-/* ========================= */
 /* BODY */
-/* ========================= */
 
 body {
-
     min-height: 100vh;
-
     overflow-x: hidden;
 
     background:
-
         linear-gradient(
             rgba(255,255,255,0.018) 1px,
             transparent 1px
         ),
-
         linear-gradient(
             90deg,
             rgba(255,255,255,0.018) 1px,
             transparent 1px
         ),
-
         var(--bg);
 
     background-size: 32px 32px;
@@ -57,12 +49,9 @@ body {
 
 
 
-/* ========================= */
 /* APP */
-/* ========================= */
 
 .app {
-
     width: 100%;
     max-width: 560px;
 
@@ -75,12 +64,9 @@ body {
 
 
 
-/* ========================= */
 /* HEADER */
-/* ========================= */
 
 .system-header {
-
     position: relative;
 
     border-bottom: 1px solid var(--line);
@@ -92,7 +78,6 @@ body {
 
 
 .aura-logo {
-
     width: 150px;
     height: auto;
 
@@ -103,13 +88,10 @@ body {
 
 
 .system-line {
-
     display: flex;
-
     justify-content: space-between;
 
     font-size: 11px;
-
     letter-spacing: 0.14em;
 
     color: var(--muted);
@@ -117,17 +99,14 @@ body {
 
 
 .online {
-
     color: var(--accent);
 }
 
 
 .system-subtitle {
-
     margin-top: 7px;
 
     font-size: 10px;
-
     letter-spacing: 0.18em;
 
     color: #505058;
@@ -135,18 +114,14 @@ body {
 
 
 
-/* ========================= */
-/* ЭКРАНЫ */
-/* ========================= */
+/* SCREENS */
 
 .screen {
-
     display: none;
 }
 
 
 .screen.active {
-
     display: block;
 
     animation: screen-enter 0.3s ease;
@@ -156,28 +131,21 @@ body {
 @keyframes screen-enter {
 
     from {
-
         opacity: 0;
-
         transform: translateY(8px);
     }
 
     to {
-
         opacity: 1;
-
         transform: translateY(0);
     }
 }
 
 
 
-/* ========================= */
-/* HOME / WELCOME */
-/* ========================= */
+/* HOME */
 
 .welcome {
-
     position: relative;
 
     padding: 72px 0 36px;
@@ -187,12 +155,9 @@ body {
 
 
 
-/* ========================= */
-/* AURI НА ГЛАВНОМ ЭКРАНЕ */
-/* ========================= */
+/* AURI */
 
 .welcome-auri {
-
     position: absolute;
 
     width: 168px;
@@ -212,7 +177,6 @@ body {
             0 20px 35px
             rgba(0, 0, 0, 0.55)
         )
-
         drop-shadow(
             0 0 22px
             rgba(102, 105, 160, 0.18)
@@ -226,41 +190,30 @@ body {
 }
 
 
-
-/* ЛЕВИТАЦИЯ */
-
 @keyframes auri-float {
 
     0% {
-
         transform: translateY(0);
     }
 
     50% {
-
         transform: translateY(-9px);
     }
 
     100% {
-
         transform: translateY(0);
     }
 }
 
 
 
-/* ========================= */
 /* SECTION NUMBER */
-/* ========================= */
 
 .section-number {
-
     position: relative;
-
     z-index: 2;
 
     font-size: 10px;
-
     letter-spacing: 0.16em;
 
     color: var(--accent);
@@ -270,14 +223,10 @@ body {
 
 
 
-/* ========================= */
 /* HOME TITLE */
-/* ========================= */
 
 .welcome h1 {
-
     position: relative;
-
     z-index: 2;
 
     max-width: 100%;
@@ -298,14 +247,10 @@ body {
 
 
 
-/* ========================= */
 /* HOME DESCRIPTION */
-/* ========================= */
 
 .welcome p {
-
     position: relative;
-
     z-index: 2;
 
     max-width: 330px;
@@ -313,7 +258,6 @@ body {
     margin-top: 24px;
 
     font-size: 13px;
-
     line-height: 1.6;
 
     color: var(--muted);
@@ -321,48 +265,34 @@ body {
 
 
 
-/* ========================= */
 /* USER STATUS */
-/* ========================= */
 
 .user-status {
-
     position: relative;
-
     z-index: 2;
 
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 
     margin-top: 32px;
 
-    border-top:
-        1px solid
-        var(--line);
-
-    border-bottom:
-        1px solid
-        var(--line);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
 
     padding: 13px 0;
 
     font-size: 10px;
-
     letter-spacing: 0.12em;
 }
 
 
 .user-status span {
-
     color: var(--muted);
 }
 
 
 .user-status strong {
-
     color: var(--accent);
 
     font-weight: 500;
@@ -370,14 +300,10 @@ body {
 
 
 
-/* ========================= */
 /* MENU */
-/* ========================= */
 
 .menu {
-
     display: flex;
-
     flex-direction: column;
 
     gap: 8px;
@@ -385,16 +311,13 @@ body {
 
 
 .menu-button {
-
     width: 100%;
 
     min-height: 56px;
 
     padding: 19px 16px;
 
-    border:
-        1px solid
-        var(--line);
+    border: 1px solid var(--line);
 
     background:
         rgba(
@@ -407,15 +330,12 @@ body {
     color: var(--text);
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
     font-family: inherit;
 
     font-size: 11px;
-
     letter-spacing: 0.08em;
 
     text-align: left;
@@ -430,9 +350,7 @@ body {
 
 
 .menu-button:hover {
-
-    border-color:
-        var(--accent);
+    border-color: var(--accent);
 
     background:
         rgba(
@@ -445,9 +363,7 @@ body {
 
 
 .menu-button:active {
-
-    transform:
-        scale(0.99);
+    transform: scale(0.99);
 }
 
 
@@ -455,7 +371,6 @@ body {
 /* LOCKED */
 
 .menu-button.locked {
-
     color: #55555d;
 
     cursor: default;
@@ -463,9 +378,7 @@ body {
 
 
 .menu-button.locked:hover {
-
-    border-color:
-        var(--line);
+    border-color: var(--line);
 
     background:
         rgba(
@@ -478,7 +391,6 @@ body {
 
 
 .menu-button.locked span:last-child {
-
     font-size: 8px;
 
     color: #484850;
@@ -486,35 +398,25 @@ body {
 
 
 
-/* ========================= */
 /* AURI PANEL */
-/* ========================= */
 
 .auri-panel {
-
     margin-top: 40px;
 
-    border:
-        1px solid
-        var(--line);
+    border: 1px solid var(--line);
 
     padding: 18px;
 
     display: flex;
-
     justify-content: space-between;
-
     align-items: flex-end;
 
-    background:
-        var(--panel);
+    background: var(--panel);
 }
 
 
 .auri-panel div {
-
     display: flex;
-
     flex-direction: column;
 
     gap: 5px;
@@ -522,9 +424,7 @@ body {
 
 
 .auri-panel small {
-
     font-size: 8px;
-
     letter-spacing: 0.15em;
 
     color: var(--muted);
@@ -532,7 +432,6 @@ body {
 
 
 .auri-panel strong {
-
     font-size: 24px;
 
     font-weight: 400;
@@ -542,7 +441,6 @@ body {
 
 
 .auri-panel > span {
-
     font-size: 8px;
 
     letter-spacing: 0.12em;
@@ -552,57 +450,68 @@ body {
 
 
 
-/* ========================= */
 /* START SCREEN */
-/* ========================= */
 
 #start-screen {
-
-    padding-top: 34px;
+    padding-top: 28px;
 }
 
 
 
-/* BACK */
+/* BACK BUTTON */
 
 .back-button {
-
     appearance: none;
 
-    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-    background: none;
+    border: 1px solid var(--line);
 
-    color: var(--muted);
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.015
+        );
+
+    color: var(--text);
 
     font-family: inherit;
 
     font-size: 10px;
-
     letter-spacing: 0.14em;
 
     cursor: pointer;
 
-    padding: 8px 0;
+    padding: 12px 16px;
 
-    margin-bottom: 46px;
+    margin-bottom: 42px;
 
     transition:
-        color 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
         transform 0.2s ease;
 }
 
 
 .back-button:hover {
+    border-color: var(--accent);
 
-    color: var(--text);
+    background:
+        rgba(
+            102,
+            105,
+            160,
+            0.07
+        );
 }
 
 
 .back-button:active {
-
-    transform:
-        translateX(-3px);
+    transform: translateX(-3px);
 }
 
 
@@ -610,18 +519,16 @@ body {
 /* START HEADER */
 
 .start-header {
-
     padding-bottom: 36px;
 }
 
 
 .start-header h2 {
-
     font-size:
         clamp(
-            39px,
-            9vw,
-            58px
+            35px,
+            8vw,
+            54px
         );
 
     line-height: 0.92;
@@ -633,7 +540,6 @@ body {
 
 
 .forum-name {
-
     margin-top: 17px;
 
     color: var(--accent);
@@ -645,27 +551,19 @@ body {
 
 
 
-/* ========================= */
 /* DATE */
-/* ========================= */
 
 .date-panel {
-
-    border-top:
-        1px solid
-        var(--line);
-
-    border-bottom:
-        1px solid
-        var(--line);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
 
     padding: 15px 0;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
+
+    gap: 20px;
 
     font-size: 10px;
 
@@ -674,32 +572,30 @@ body {
 
 
 .date-panel span {
-
     color: var(--muted);
+
+    max-width: 220px;
 }
 
 
 .date-panel strong {
-
     color: var(--text);
 
     font-weight: 400;
+
+    white-space: nowrap;
 }
 
 
 
-/* ========================= */
 /* DESCRIPTION */
-/* ========================= */
 
 .start-description {
-
-    padding: 46px 0;
+    padding: 46px 0 32px;
 }
 
 
 .data-label {
-
     margin-bottom: 17px;
 
     color: var(--accent);
@@ -711,7 +607,6 @@ body {
 
 
 .start-description p {
-
     max-width: 470px;
 
     font-size: 16px;
@@ -723,15 +618,81 @@ body {
 
 
 
-/* ========================= */
+/* GALLERY */
+
+.forum-gallery {
+    margin-bottom: 46px;
+}
+
+
+.gallery-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+    font-size: 8px;
+
+    letter-spacing: 0.14em;
+
+    color: #55555d;
+}
+
+
+.gallery-grid {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+}
+
+
+.gallery-item {
+    position: relative;
+
+    overflow: hidden;
+
+    border: 1px solid var(--line);
+
+    background: var(--panel);
+
+    aspect-ratio: 4 / 3;
+}
+
+
+.gallery-main {
+    grid-column: 1 / -1;
+
+    aspect-ratio: 16 / 9;
+}
+
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.4s ease,
+        filter 0.4s ease;
+}
+
+
+.gallery-item:hover img {
+    transform: scale(1.025);
+}
+
+
+
 /* ACCESS */
-/* ========================= */
 
 .access-panel {
-
-    border:
-        1px solid
-        var(--line);
+    border: 1px solid var(--line);
 
     background:
         rgba(
@@ -746,11 +707,8 @@ body {
 
 
 .access-top {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
 
     margin-bottom: 28px;
@@ -764,13 +722,11 @@ body {
 
 
 .access-open {
-
     color: var(--accent);
 }
 
 
 .access-title {
-
     font-size:
         clamp(
             23px,
@@ -787,23 +743,17 @@ body {
 
 
 
-/* ========================= */
 /* SYSTEM NOTE */
-/* ========================= */
 
 .system-note {
-
     display: flex;
-
     justify-content: space-between;
 
     margin-top: 22px;
 
     padding-bottom: 22px;
 
-    border-bottom:
-        1px solid
-        var(--line);
+    border-bottom: 1px solid var(--line);
 
     color: #4c4c54;
 
@@ -814,19 +764,14 @@ body {
 
 
 
-/* ========================= */
 /* FOOTER */
-/* ========================= */
 
 footer {
-
     margin-top: 34px;
 
     padding-top: 14px;
 
-    border-top:
-        1px solid
-        var(--line);
+    border-top: 1px solid var(--line);
 
     font-size: 8px;
 
@@ -837,35 +782,25 @@ footer {
 
 
 
-/* ========================= */
 /* MOBILE */
-/* ========================= */
 
 @media (max-width: 600px) {
 
-
     .app {
-
         padding-left: 20px;
-
         padding-right: 20px;
     }
 
 
-    /* HOME */
-
     .welcome {
-
         padding-top: 68px;
     }
 
 
     .welcome-auri {
-
         width: 146px;
 
         top: -22px;
-
         right: 8px;
 
         opacity: 0.96;
@@ -873,7 +808,6 @@ footer {
 
 
     .welcome h1 {
-
         font-size:
             clamp(
                 38px,
@@ -884,54 +818,81 @@ footer {
 
 
 
-    /* START */
-
     #start-screen {
-
-        padding-top: 28px;
+        padding-top: 24px;
     }
 
 
     .back-button {
-
-        margin-bottom: 36px;
+        margin-bottom: 34px;
     }
 
 
     .start-header h2 {
-
         font-size:
             clamp(
-                38px,
-                10vw,
-                50px
+                34px,
+                9.4vw,
+                46px
             );
     }
 
 
-    .start-description {
+    .date-panel {
+        align-items: flex-start;
 
-        padding:
-            38px 0;
+        gap: 16px;
+    }
+
+
+    .date-panel span {
+        max-width: 180px;
+
+        line-height: 1.45;
+    }
+
+
+    .start-description {
+        padding: 38px 0 28px;
     }
 
 
     .start-description p {
-
         font-size: 15px;
 
         line-height: 1.65;
     }
 
 
-    .access-panel {
+    .gallery-grid {
+        grid-template-columns: 1fr;
 
+        gap: 8px;
+    }
+
+
+    .gallery-main {
+        grid-column: auto;
+    }
+
+
+    .gallery-item,
+    .gallery-main {
+        aspect-ratio: 16 / 10;
+    }
+
+
+    .forum-gallery {
+        margin-bottom: 38px;
+    }
+
+
+    .access-panel {
         padding: 18px;
     }
 
 
     .access-title {
-
         font-size: 24px;
     }
 
