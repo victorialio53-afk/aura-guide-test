@@ -15,8 +15,13 @@
     --accent: #6669a0;
 }
 
+
+/* BODY */
+
 body {
     min-height: 100vh;
+
+    overflow-x: hidden;
 
     background:
         linear-gradient(
@@ -99,8 +104,68 @@ body {
 /* WELCOME */
 
 .welcome {
+    position: relative;
+
     padding: 48px 0 36px;
+
+    isolation: isolate;
 }
+
+
+/* AURI */
+
+.welcome-auri {
+    position: absolute;
+
+    width: 280px;
+    height: auto;
+
+    right: -45px;
+    top: 45px;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    opacity: 0.88;
+
+    filter:
+        drop-shadow(0 20px 35px rgba(0, 0, 0, 0.55))
+        drop-shadow(0 0 20px rgba(102, 105, 160, 0.16));
+
+    animation: auri-float 7s ease-in-out infinite;
+}
+
+
+/* ТЕКСТ ПОВЕРХ AURI */
+
+.section-number,
+.welcome h1,
+.welcome p,
+.user-status {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* ЛЕВИТАЦИЯ AURI */
+
+@keyframes auri-float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-9px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/* SYSTEM NUMBER */
 
 .section-number {
     font-size: 10px;
@@ -110,6 +175,9 @@ body {
 
     margin-bottom: 14px;
 }
+
+
+/* MAIN TITLE */
 
 .welcome h1 {
     font-size: clamp(38px, 11vw, 64px);
@@ -121,6 +189,9 @@ body {
     font-weight: 500;
 }
 
+
+/* DESCRIPTION */
+
 .welcome p {
     max-width: 330px;
 
@@ -131,6 +202,9 @@ body {
 
     color: var(--muted);
 }
+
+
+/* USER STATUS */
 
 .user-status {
     display: flex;
@@ -208,7 +282,7 @@ body {
 }
 
 
-/* AURI */
+/* AURI PANEL */
 
 .auri-panel {
     margin-top: 40px;
@@ -268,4 +342,25 @@ footer {
     letter-spacing: 0.18em;
 
     color: #3f3f46;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .app {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .welcome-auri {
+        width: 215px;
+
+        right: -45px;
+        top: 62px;
+
+        opacity: 0.82;
+    }
+
 }
