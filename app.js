@@ -1,11 +1,3 @@
-const journeyButton =
-    document.getElementById("go-to-journey");
-
-
-const journey =
-    document.getElementById("journey");
-
-
 const messageElement =
     document.getElementById("auri-message");
 
@@ -15,37 +7,17 @@ const typingIndicator =
 
 
 
-/* ========================= */
-/* ПЕРЕХОД К КАРТЕ */
-/* ========================= */
-
-journeyButton.addEventListener(
-    "click",
-    () => {
-
-        journey.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-
-    }
-);
-
-
-
-/* ========================= */
-/* РЕПЛИКИ AURI */
-/* ========================= */
-
 const auriMessages = [
 
     "Привет, пользователь. Я помогу тебе пройти путь AURA.",
 
-    "Следи за системой. Новые уровни будут открываться постепенно.",
+    "Регистрация уже открыта. Сейчас твоя главная задача — подключиться к форуму.",
 
-    "Задания, расписание и новые данные появятся здесь, когда придет время.",
+    "После регистрации система переведёт тебя к этапу формирования команды.",
 
-    "Если хочешь рассмотреть меня поближе — открой мою 3D-модель."
+    "Задания и расписание появятся здесь, когда система откроет доступ.",
+
+    "Ты можешь открыть мою 3D-модель и рассмотреть меня поближе."
 
 ];
 
@@ -109,21 +81,19 @@ function showNextAuriMessage() {
         }, 900);
 
 
-    }, 250);
+    }, 220);
 
 }
 
 
 
-/* Новая реплика примерно раз в 6 секунд */
-
 setInterval(
     showNextAuriMessage,
-    6000
+    6500
 );
 
 
 
 console.log(
-    "AURA.SYSTEM / USER JOURNEY INITIALIZED"
+    "AURA.SYSTEM / AURI ONLINE"
 );
