@@ -104,13 +104,7 @@ body {
 
 .welcome {
     position: relative;
-
-    /*
-    Здесь специально оставляем свободную зону
-    под AURI перед заголовком
-    */
-    padding: 150px 0 36px;
-
+    padding: 72px 0 36px;
     isolation: isolate;
 }
 
@@ -120,17 +114,17 @@ body {
 .welcome-auri {
     position: absolute;
 
-    width: 175px;
+    width: 168px;
     height: auto;
 
-    top: 18px;
-    right: 5px;
+    top: -34px;
+    right: 34px;
 
-    z-index: 1;
+    z-index: 3;
 
     pointer-events: none;
 
-    opacity: 0.9;
+    opacity: 0.96;
 
     filter:
         drop-shadow(0 20px 35px rgba(0, 0, 0, 0.55))
@@ -361,16 +355,16 @@ footer {
     }
 
     .welcome {
-        padding-top: 145px;
+        padding-top: 68px;
     }
 
     .welcome-auri {
-        width: 155px;
+        width: 146px;
 
-        top: 15px;
-        right: 18px;
+        top: -22px;
+        right: 8px;
 
-        opacity: 0.92;
+        opacity: 0.96;
     }
 
     .welcome h1 {
