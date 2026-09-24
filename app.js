@@ -87,6 +87,8 @@ function showNextAuriMessage() {
 
 
 
+/* новая реплика примерно раз в 6.5 секунд */
+
 setInterval(
     showNextAuriMessage,
     6500
