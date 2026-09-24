@@ -63,6 +63,7 @@ body {
 
 .system-header {
     border-bottom: 1px solid var(--line);
+
     padding-bottom: 20px;
 }
 
@@ -104,7 +105,11 @@ body {
 .welcome {
     position: relative;
 
-    padding: 48px 0 36px;
+    /*
+    Здесь специально оставляем свободную зону
+    под AURI перед заголовком
+    */
+    padding: 150px 0 36px;
 
     isolation: isolate;
 }
@@ -115,38 +120,27 @@ body {
 .welcome-auri {
     position: absolute;
 
-    width: 220px;
+    width: 175px;
     height: auto;
 
-    right: -25px;
-    top: 58px;
+    top: 18px;
+    right: 5px;
 
     z-index: 1;
 
     pointer-events: none;
 
-    opacity: 0.82;
+    opacity: 0.9;
 
     filter:
         drop-shadow(0 20px 35px rgba(0, 0, 0, 0.55))
-        drop-shadow(0 0 20px rgba(102, 105, 160, 0.16));
+        drop-shadow(0 0 22px rgba(102, 105, 160, 0.18));
 
     animation: auri-float 7s ease-in-out infinite;
 }
 
 
-/* ТЕКСТ ПОВЕРХ AURI */
-
-.section-number,
-.welcome h1,
-.welcome p,
-.user-status {
-    position: relative;
-    z-index: 2;
-}
-
-
-/* ЛЕВИТАЦИЯ AURI */
+/* ЛЕВИТАЦИЯ */
 
 @keyframes auri-float {
     0% {
@@ -166,6 +160,9 @@ body {
 /* SYSTEM NUMBER */
 
 .section-number {
+    position: relative;
+    z-index: 2;
+
     font-size: 10px;
     letter-spacing: 0.16em;
 
@@ -196,6 +193,9 @@ body {
 /* DESCRIPTION */
 
 .welcome p {
+    position: relative;
+    z-index: 2;
+
     max-width: 330px;
 
     margin-top: 24px;
@@ -210,6 +210,9 @@ body {
 /* USER STATUS */
 
 .user-status {
+    position: relative;
+    z-index: 2;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -357,13 +360,17 @@ footer {
         padding-right: 20px;
     }
 
+    .welcome {
+        padding-top: 145px;
+    }
+
     .welcome-auri {
-        width: 175px;
+        width: 155px;
 
-        right: -35px;
-        top: 45px;
+        top: 15px;
+        right: 18px;
 
-        opacity: 0.8;
+        opacity: 0.92;
     }
 
     .welcome h1 {
