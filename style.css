@@ -8,21 +8,32 @@
 :root {
     --bg: #0b0b0d;
     --panel: #111114;
+    --panel-soft: #0f0f12;
 
     --line: #2b2b32;
+    --line-soft: #202026;
 
     --text: #d9d9d9;
     --muted: #77777f;
+    --dark-muted: #505058;
 
     --accent: #6669a0;
 }
 
 
 
+/* ========================= */
 /* BODY */
+/* ========================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
 
 body {
     min-height: 100vh;
+
     overflow-x: hidden;
 
     background:
@@ -49,39 +60,45 @@ body {
 
 
 
+/* ========================= */
 /* APP */
+/* ========================= */
 
 .app {
     width: 100%;
-    max-width: 560px;
+    max-width: 640px;
 
     min-height: 100vh;
 
     margin: 0 auto;
 
-    padding: 24px 20px 32px;
+    padding: 24px 20px 36px;
 }
 
 
 
+/* ========================= */
 /* HEADER */
+/* ========================= */
 
 .system-header {
     position: relative;
 
-    border-bottom: 1px solid var(--line);
+    z-index: 1;
 
     padding-bottom: 20px;
 
-    z-index: 1;
+    border-bottom:
+        1px solid
+        var(--line);
 }
 
 
 .aura-logo {
+    display: block;
+
     width: 150px;
     height: auto;
-
-    display: block;
 
     margin-bottom: 24px;
 }
@@ -89,9 +106,11 @@ body {
 
 .system-line {
     display: flex;
+
     justify-content: space-between;
 
     font-size: 11px;
+
     letter-spacing: 0.14em;
 
     color: var(--muted);
@@ -106,64 +125,39 @@ body {
 .system-subtitle {
     margin-top: 7px;
 
+    color: var(--dark-muted);
+
     font-size: 10px;
+
     letter-spacing: 0.18em;
-
-    color: #505058;
-}
-
-
-
-/* SCREENS */
-
-.screen {
-    display: none;
-}
-
-
-.screen.active {
-    display: block;
-
-    animation: screen-enter 0.3s ease;
-}
-
-
-@keyframes screen-enter {
-
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
 }
 
 
 
 /* ========================= */
-/* HOME */
+/* HERO */
 /* ========================= */
 
-.welcome {
+.hero {
     position: relative;
 
     z-index: 2;
 
-    padding: 72px 0 36px;
+    padding:
+        72px
+        0
+        48px;
 
-    isolation: isolate;
+    border-bottom:
+        1px solid
+        var(--line);
 }
 
 
-
-/* AURI */
-
-.welcome-auri {
+.hero-auri {
     position: absolute;
+
+    z-index: 4;
 
     width: 168px;
     height: auto;
@@ -171,20 +165,16 @@ body {
     top: -34px;
     right: 34px;
 
-    z-index: 3;
-
     pointer-events: none;
-
-    opacity: 0.96;
 
     filter:
         drop-shadow(
             0 20px 35px
-            rgba(0, 0, 0, 0.55)
+            rgba(0,0,0,0.55)
         )
         drop-shadow(
             0 0 22px
-            rgba(102, 105, 160, 0.18)
+            rgba(102,105,160,0.18)
         );
 
     animation:
@@ -212,32 +202,25 @@ body {
 }
 
 
-
-/* SECTION NUMBER */
-
 .section-number {
     position: relative;
 
     z-index: 2;
 
-    font-size: 10px;
-    letter-spacing: 0.16em;
+    margin-bottom: 14px;
 
     color: var(--accent);
 
-    margin-bottom: 14px;
+    font-size: 10px;
+
+    letter-spacing: 0.16em;
 }
 
 
-
-/* HOME TITLE */
-
-.welcome h1 {
+.hero h1 {
     position: relative;
 
     z-index: 2;
-
-    max-width: 100%;
 
     font-size:
         clamp(
@@ -254,104 +237,217 @@ body {
 }
 
 
-
-/* HOME DESCRIPTION */
-
-.welcome p {
+.hero-description {
     position: relative;
 
     z-index: 2;
 
-    max-width: 330px;
+    max-width: 360px;
 
     margin-top: 24px;
 
-    font-size: 13px;
-    line-height: 1.6;
-
     color: var(--muted);
+
+    font-size: 13px;
+
+    line-height: 1.6;
 }
 
 
 
-/* USER STATUS */
+/* ========================= */
+/* AURI SPEECH */
+/* ========================= */
 
-.user-status {
+.auri-message-box {
     position: relative;
 
-    z-index: 2;
+    z-index: 5;
 
+    margin-top: 34px;
+
+    padding: 18px;
+
+    border:
+        1px solid
+        rgba(102,105,160,0.46);
+
+    background:
+        rgba(17,17,20,0.96);
+}
+
+
+.auri-message-box::before {
+    content: "";
+
+    position: absolute;
+
+    top: -7px;
+    right: 65px;
+
+    width: 12px;
+    height: 12px;
+
+    background:
+        var(--panel);
+
+    border-left:
+        1px solid
+        rgba(102,105,160,0.46);
+
+    border-top:
+        1px solid
+        rgba(102,105,160,0.46);
+
+    transform:
+        rotate(45deg);
+}
+
+
+.auri-message-top {
     display: flex;
 
     justify-content: space-between;
-    align-items: center;
 
-    margin-top: 32px;
+    gap: 20px;
 
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    margin-bottom: 17px;
 
-    padding: 13px 0;
-
-    font-size: 10px;
-    letter-spacing: 0.12em;
-}
-
-
-.user-status span {
     color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 0.14em;
 }
 
 
-.user-status strong {
+.auri-status {
     color: var(--accent);
 
-    font-weight: 500;
+    white-space: nowrap;
+}
+
+
+.auri-message-content {
+    position: relative;
+
+    min-height: 50px;
+}
+
+
+#auri-message {
+    max-width: 470px;
+
+    color: #b4b4bb;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    transition:
+        opacity 0.25s ease;
+}
+
+
+#auri-message.message-hidden {
+    opacity: 0;
 }
 
 
 
-/* MENU */
+/* TYPING */
 
-.menu {
+.typing-indicator {
+    display: none;
+
+    align-items: center;
+
+    gap: 5px;
+
+    height: 30px;
+}
+
+
+.typing-indicator.active {
     display: flex;
-    flex-direction: column;
-
-    gap: 8px;
 }
 
 
-.menu-button {
-    width: 100%;
+.typing-indicator span {
+    width: 5px;
+    height: 5px;
 
-    min-height: 56px;
-
-    padding: 19px 16px;
-
-    border: 1px solid var(--line);
+    border-radius: 50%;
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.015
-        );
+        var(--accent);
+
+    animation:
+        typing-dot
+        1s
+        infinite ease-in-out;
+}
+
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+
+@keyframes typing-dot {
+
+    0%,
+    60%,
+    100% {
+        opacity: 0.25;
+
+        transform:
+            translateY(0);
+    }
+
+    30% {
+        opacity: 1;
+
+        transform:
+            translateY(-4px);
+    }
+
+}
+
+
+
+/* AURI BUTTON */
+
+.auri-3d-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 17px;
+
+    padding: 11px 13px;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        rgba(255,255,255,0.015);
 
     color: var(--text);
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    font-size: 9px;
 
-    font-family: inherit;
+    letter-spacing: 0.12em;
 
-    font-size: 11px;
-    letter-spacing: 0.08em;
-
-    text-align: left;
-
-    cursor: pointer;
+    text-decoration: none;
 
     transition:
         border-color 0.2s ease,
@@ -360,74 +456,547 @@ body {
 }
 
 
-.menu-button:hover {
-    border-color: var(--accent);
+.auri-3d-button:hover {
+    border-color:
+        var(--accent);
 
     background:
-        rgba(
-            102,
-            105,
-            160,
-            0.07
+        rgba(102,105,160,0.08);
+}
+
+
+.auri-3d-button:active {
+    transform:
+        scale(0.98);
+}
+
+
+
+/* ========================= */
+/* OBJECTIVE */
+/* ========================= */
+
+.objective-panel {
+    margin:
+        38px
+        0
+        70px;
+
+    padding: 21px;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        var(--panel-soft);
+}
+
+
+.objective-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 0.15em;
+}
+
+
+.objective-status {
+    color:
+        var(--accent);
+}
+
+
+.objective-panel h2 {
+    margin-top: 32px;
+
+    font-size:
+        clamp(
+            25px,
+            6vw,
+            34px
         );
+
+    line-height: 1;
+
+    letter-spacing: -0.04em;
+
+    font-weight: 400;
 }
 
 
-.menu-button:active {
-    transform: scale(0.99);
+.objective-panel p {
+    max-width: 440px;
+
+    margin-top: 14px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.6;
 }
 
 
 
-/* LOCKED */
+/* ========================= */
+/* SYSTEM BUTTON */
+/* ========================= */
 
-.menu-button.locked {
-    color: #55555d;
+.system-button {
+    appearance: none;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 23px;
+
+    padding: 12px 14px;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        rgba(255,255,255,0.015);
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 9px;
+
+    letter-spacing: 0.13em;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.system-button:hover {
+    border-color:
+        var(--accent);
+
+    background:
+        rgba(102,105,160,0.08);
+}
+
+
+.disabled-button {
+    color: #4c4c55;
 
     cursor: default;
 }
 
 
-.menu-button.locked:hover {
-    border-color: var(--line);
+.disabled-button:hover {
+    border-color:
+        var(--line);
 
     background:
-        rgba(
-            255,
-            255,
-            255,
-            0.015
-        );
+        rgba(255,255,255,0.015);
 }
 
 
-.menu-button.locked span:last-child {
+
+/* ========================= */
+/* JOURNEY HEADER */
+/* ========================= */
+
+.journey {
+    scroll-margin-top: 24px;
+}
+
+
+.journey-heading {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 44px;
+}
+
+
+.journey-heading h2 {
+    font-size:
+        clamp(
+            32px,
+            8vw,
+            48px
+        );
+
+    line-height: 0.95;
+
+    letter-spacing: -0.055em;
+
+    font-weight: 500;
+}
+
+
+.journey-code {
+    padding-bottom: 4px;
+
+    color: #44444c;
+
     font-size: 8px;
 
-    color: #484850;
+    letter-spacing: 0.16em;
 }
 
 
 
-/* AURI PANEL */
+/* ========================= */
+/* LEVELS */
+/* ========================= */
 
-.auri-panel {
-    margin-top: 40px;
+.level {
+    display: grid;
 
-    border: 1px solid var(--line);
+    grid-template-columns:
+        34px
+        1fr;
 
-    padding: 18px;
+    gap: 18px;
+
+    position: relative;
+}
+
+
+.level-marker {
+    position: relative;
 
     display: flex;
 
-    justify-content: space-between;
-    align-items: flex-end;
-
-    background: var(--panel);
+    justify-content: center;
 }
 
 
-.auri-panel div {
+.level-dot {
+    position: relative;
+
+    z-index: 3;
+
+    width: 11px;
+    height: 11px;
+
+    margin-top: 7px;
+
+    border:
+        1px solid
+        #53535d;
+
+    border-radius: 50%;
+
+    background:
+        var(--bg);
+}
+
+
+.level-line {
+    position: absolute;
+
+    z-index: 1;
+
+    width: 1px;
+
+    top: 17px;
+    bottom: 0;
+
+    background:
+        var(--line);
+}
+
+
+.complete .level-dot {
+    border-color:
+        var(--accent);
+
+    background:
+        var(--accent);
+}
+
+
+.waiting .level-dot {
+    box-shadow:
+        0 0 0 3px
+        rgba(102,105,160,0.06);
+}
+
+
+.locked .level-dot {
+    border-color:
+        #36363e;
+}
+
+
+
+/* BODY */
+
+.level-body {
+    padding:
+        0
+        0
+        60px;
+}
+
+
+.level-meta {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 13px;
+
+    color: #55555e;
+
+    font-size: 8px;
+
+    letter-spacing: 0.15em;
+}
+
+
+.status-complete {
+    color:
+        var(--accent);
+}
+
+
+.level h3 {
+    font-size:
+        clamp(
+            25px,
+            6vw,
+            32px
+        );
+
+    line-height: 1;
+
+    letter-spacing: -0.035em;
+
+    font-weight: 400;
+}
+
+
+.level-subtitle {
+    margin-top: 24px;
+
+    color: var(--accent);
+
+    font-size: 9px;
+
+    letter-spacing: 0.15em;
+}
+
+
+.level-text {
+    max-width: 455px;
+
+    margin-top: 15px;
+
+    color: #818189;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+
+.level-date {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    color: var(--accent);
+
+    font-size: 10px;
+
+    letter-spacing: 0.16em;
+}
+
+
+.system-lock {
+    display: inline-block;
+
+    margin-top: 19px;
+
+    padding: 8px 10px;
+
+    border:
+        1px solid
+        var(--line);
+
+    color: #45454d;
+
+    font-size: 7px;
+
+    letter-spacing: 0.14em;
+}
+
+
+.locked .level-body {
+    opacity: 0.72;
+}
+
+
+
+/* ========================= */
+/* ARCHIVE */
+/* ========================= */
+
+.archive-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin:
+        30px
+        0
+        12px;
+
+    color: #505058;
+
+    font-size: 8px;
+
+    letter-spacing: 0.14em;
+}
+
+
+.forum-gallery {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 8px;
+}
+
+
+.gallery-item {
+    overflow: hidden;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        var(--panel);
+
+    aspect-ratio:
+        4 / 3;
+}
+
+
+.gallery-main {
+    grid-column:
+        1 / -1;
+
+    aspect-ratio:
+        16 / 9;
+}
+
+
+.gallery-item img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform
+        0.4s ease;
+}
+
+
+.gallery-item:hover img {
+    transform:
+        scale(1.025);
+}
+
+
+
+/* ========================= */
+/* MODULES */
+/* ========================= */
+
+.modules {
+    margin-top: 24px;
+
+    padding-top: 32px;
+
+    border-top:
+        1px solid
+        var(--line);
+}
+
+
+.modules-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 0.15em;
+}
+
+
+.module-card {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-top: 8px;
+
+    padding: 18px;
+
+    border:
+        1px solid
+        var(--line);
+
+    background:
+        var(--panel-soft);
+
+    color: var(--text);
+
+    text-decoration: none;
+}
+
+
+.module-card div {
     display: flex;
 
     flex-direction: column;
@@ -436,638 +1005,79 @@ body {
 }
 
 
-.auri-panel small {
-    font-size: 8px;
-    letter-spacing: 0.15em;
-
+.module-card small {
     color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 0.15em;
 }
 
 
-.auri-panel strong {
-    font-size: 24px;
+.module-card strong {
+    font-size: 23px;
+
+    letter-spacing: 0.02em;
 
     font-weight: 400;
-
-    letter-spacing: 0.04em;
 }
 
 
-.auri-panel > span {
+.module-card > span {
+    color: var(--accent);
+
     font-size: 8px;
 
-    letter-spacing: 0.12em;
-
-    color: var(--accent);
-}
-
-
-
-/* ========================= */
-/* SHARED INNER SCREENS */
-/* ========================= */
-
-#start-screen,
-#path-screen {
-    padding-top: 28px;
-}
-
-
-
-/* BACK BUTTON */
-
-.back-button {
-    appearance: none;
-
-    display: inline-flex;
-
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid var(--line);
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.015
-        );
-
-    color: var(--text);
-
-    font-family: inherit;
-
-    font-size: 10px;
-    letter-spacing: 0.14em;
-
-    cursor: pointer;
-
-    padding: 12px 16px;
-
-    margin-bottom: 42px;
-
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease,
-        transform 0.2s ease;
-}
-
-
-.back-button:hover {
-    border-color: var(--accent);
-
-    background:
-        rgba(
-            102,
-            105,
-            160,
-            0.07
-        );
-}
-
-
-.back-button:active {
-    transform: translateX(-3px);
-}
-
-
-
-/* ========================= */
-/* START */
-/* ========================= */
-
-.start-header {
-    padding-bottom: 36px;
-}
-
-
-.start-header h2 {
-    font-size:
-        clamp(
-            35px,
-            8vw,
-            54px
-        );
-
-    line-height: 0.92;
-
-    letter-spacing: -0.055em;
-
-    font-weight: 500;
-}
-
-
-.forum-name {
-    margin-top: 17px;
-
-    color: var(--accent);
-
-    font-size: 15px;
-
-    letter-spacing: 0.24em;
-}
-
-
-
-/* DATE */
-
-.date-panel {
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-
-    padding: 15px 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 20px;
-
-    font-size: 10px;
     letter-spacing: 0.13em;
 }
 
 
-.date-panel span {
-    color: var(--muted);
-
-    max-width: 220px;
+.inactive-module {
+    opacity: 0.5;
 }
 
 
-.date-panel strong {
-    color: var(--text);
-
-    font-weight: 400;
-
-    white-space: nowrap;
-}
-
-
-
-/* START DESCRIPTION */
-
-.start-description {
-    padding: 46px 0 32px;
-}
-
-
-.data-label {
-    margin-bottom: 17px;
-
-    color: var(--accent);
-
-    font-size: 9px;
-    letter-spacing: 0.16em;
-}
-
-
-.start-description p {
-    max-width: 470px;
-
-    font-size: 16px;
-    line-height: 1.65;
-
-    color: #a5a5ac;
-}
-
-
-
-/* GALLERY */
-
-.forum-gallery {
-    margin-bottom: 46px;
-}
-
-
-.gallery-header {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    margin-bottom: 12px;
-
-    font-size: 8px;
-    letter-spacing: 0.14em;
-
-    color: #55555d;
-}
-
-
-.gallery-grid {
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 8px;
-}
-
-
-.gallery-item {
-    position: relative;
-
-    overflow: hidden;
-
-    border: 1px solid var(--line);
-
-    background: var(--panel);
-
-    aspect-ratio: 4 / 3;
-}
-
-
-.gallery-main {
-    grid-column: 1 / -1;
-
-    aspect-ratio: 16 / 9;
-}
-
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: cover;
-
+.active-module {
     transition:
-        transform 0.4s ease;
+        border-color 0.2s ease,
+        background 0.2s ease;
 }
 
 
-.gallery-item:hover img {
-    transform: scale(1.025);
-}
-
-
-
-/* ACCESS */
-
-.access-panel {
-    border: 1px solid var(--line);
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.015
-        );
-
-    padding: 20px;
-}
-
-
-.access-top {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 28px;
-
-    font-size: 8px;
-    letter-spacing: 0.14em;
-
-    color: var(--muted);
-}
-
-
-.access-open {
-    color: var(--accent);
-}
-
-
-.access-title {
-    font-size:
-        clamp(
-            23px,
-            5vw,
-            31px
-        );
-
-    line-height: 1;
-
-    letter-spacing: -0.035em;
-
-    font-weight: 400;
-}
-
-
-
-/* SYSTEM NOTE */
-
-.system-note {
-    display: flex;
-
-    justify-content: space-between;
-
-    margin-top: 22px;
-
-    padding-bottom: 22px;
-
-    border-bottom: 1px solid var(--line);
-
-    color: #4c4c54;
-
-    font-size: 7px;
-    letter-spacing: 0.16em;
-}
-
-
-
-/* ========================= */
-/* MY PATH */
-/* ========================= */
-
-.path-header {
-    padding-bottom: 42px;
-}
-
-
-.path-header h2 {
-    font-size:
-        clamp(
-            36px,
-            8vw,
-            54px
-        );
-
-    line-height: 0.93;
-
-    letter-spacing: -0.055em;
-
-    font-weight: 500;
-}
-
-
-.path-label {
-    margin-top: 24px;
-
-    padding-top: 14px;
-
-    border-top: 1px solid var(--line);
-
-    color: var(--accent);
-
-    font-size: 9px;
-    letter-spacing: 0.16em;
-}
-
-
-
-/* TIMELINE */
-
-.timeline {
-    padding-top: 6px;
-}
-
-
-.timeline-item {
-    position: relative;
-
-    display: grid;
-
-    grid-template-columns: 34px 1fr;
-
-    gap: 18px;
-}
-
-
-.timeline-marker {
-    position: relative;
-
-    display: flex;
-
-    justify-content: center;
-}
-
-
-.timeline-dot {
-    position: relative;
-
-    z-index: 2;
-
-    width: 10px;
-    height: 10px;
-
-    margin-top: 6px;
-
-    border: 1px solid #55555f;
-
-    border-radius: 50%;
-
-    background: var(--bg);
-}
-
-
-.timeline-line {
-    position: absolute;
-
-    z-index: 1;
-
-    top: 15px;
-    bottom: -1px;
-
-    width: 1px;
-
-    background: var(--line);
-}
-
-
-
-/* ACTIVE DOT */
-
-.active-stage .timeline-dot {
-    border-color: var(--accent);
-
-    background: var(--accent);
-
-    box-shadow:
-        0 0 16px
-        rgba(102, 105, 160, 0.55);
-}
-
-
-
-/* TIMELINE CONTENT */
-
-.timeline-content {
-    padding-bottom: 50px;
-}
-
-
-.timeline-number {
-    margin-bottom: 10px;
-
-    color: #55555d;
-
-    font-size: 9px;
-    letter-spacing: 0.15em;
-}
-
-
-.active-stage .timeline-number {
-    color: var(--accent);
-}
-
-
-.timeline-content h3 {
-    font-size: 25px;
-
-    line-height: 1;
-
-    letter-spacing: -0.025em;
-
-    font-weight: 400;
-}
-
-
-.timeline-content p {
-    max-width: 390px;
-
-    margin-top: 14px;
-
-    color: #77777f;
-
-    font-size: 13px;
-    line-height: 1.6;
-}
-
-
-.timeline-date {
-    display: inline-block;
-
-    margin-top: 12px;
-
-    color: var(--accent);
-
-    font-size: 9px;
-    letter-spacing: 0.15em;
-}
-
-
-
-/* STATUS */
-
-.stage-status {
-    display: inline-block;
-
-    margin-top: 18px;
-
-    border: 1px solid var(--line);
-
-    padding: 8px 10px;
-
-    color: #55555d;
-
-    font-size: 7px;
-    letter-spacing: 0.14em;
-}
-
-
-.stage-status.active {
+.active-module:hover {
     border-color:
-        rgba(
-            102,
-            105,
-            160,
-            0.55
-        );
-
-    color: var(--accent);
+        var(--accent);
 
     background:
-        rgba(
-            102,
-            105,
-            160,
-            0.06
-        );
-}
-
-
-.locked-status {
-    color: #414149;
+        rgba(102,105,160,0.06);
 }
 
 
 
-/* JOURNEY PANEL */
-
-.journey-panel {
-    margin-top: 6px;
-
-    border: 1px solid var(--line);
-
-    padding: 20px;
-
-    background:
-        rgba(
-            255,
-            255,
-            255,
-            0.015
-        );
-}
-
-
-.journey-top {
-    display: flex;
-
-    justify-content: space-between;
-
-    font-size: 8px;
-    letter-spacing: 0.15em;
-
-    color: var(--muted);
-}
-
-
-.journey-active {
-    color: var(--accent);
-}
-
-
-.journey-title {
-    margin-top: 28px;
-
-    font-size: 27px;
-
-    letter-spacing: -0.035em;
-}
-
-
-.journey-panel p {
-    max-width: 390px;
-
-    margin-top: 12px;
-
-    color: #77777f;
-
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-
-
+/* ========================= */
 /* FOOTER */
+/* ========================= */
 
 footer {
-    margin-top: 34px;
+    display: flex;
 
-    padding-top: 14px;
+    justify-content: space-between;
 
-    border-top: 1px solid var(--line);
+    gap: 20px;
 
-    font-size: 8px;
-    letter-spacing: 0.18em;
+    margin-top: 42px;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid
+        var(--line);
 
     color: #3f3f46;
+
+    font-size: 7px;
+
+    letter-spacing: 0.17em;
 }
 
 
@@ -1078,32 +1088,26 @@ footer {
 
 @media (max-width: 600px) {
 
-
     .app {
         padding-left: 20px;
         padding-right: 20px;
     }
 
 
-
-    /* HOME */
-
-    .welcome {
+    .hero {
         padding-top: 68px;
     }
 
 
-    .welcome-auri {
+    .hero-auri {
         width: 146px;
 
         top: -22px;
         right: 8px;
-
-        opacity: 0.96;
     }
 
 
-    .welcome h1 {
+    .hero h1 {
         font-size:
             clamp(
                 38px,
@@ -1113,63 +1117,42 @@ footer {
     }
 
 
-
-    /* INNER SCREENS */
-
-    #start-screen,
-    #path-screen {
-        padding-top: 24px;
+    .auri-message-box::before {
+        right: 48px;
     }
 
 
-    .back-button {
-        margin-bottom: 34px;
+    .objective-panel {
+        margin-bottom: 58px;
     }
 
 
-
-    /* START */
-
-    .start-header h2 {
-        font-size:
-            clamp(
-                34px,
-                9.4vw,
-                46px
-            );
-    }
-
-
-    .date-panel {
+    .journey-heading {
         align-items: flex-start;
-
-        gap: 16px;
     }
 
 
-    .date-panel span {
-        max-width: 180px;
-
-        line-height: 1.45;
+    .journey-code {
+        padding-top: 5px;
     }
 
 
-    .start-description {
-        padding: 38px 0 28px;
+    .level {
+        grid-template-columns:
+            26px
+            1fr;
+
+        gap: 14px;
     }
 
 
-    .start-description p {
-        font-size: 15px;
-
-        line-height: 1.65;
+    .level-body {
+        padding-bottom: 50px;
     }
 
 
-    .gallery-grid {
+    .forum-gallery {
         grid-template-columns: 1fr;
-
-        gap: 8px;
     }
 
 
@@ -1180,69 +1163,20 @@ footer {
 
     .gallery-item,
     .gallery-main {
-        aspect-ratio: 16 / 10;
+        aspect-ratio:
+            16 / 10;
     }
 
 
-    .forum-gallery {
-        margin-bottom: 38px;
+    .module-card strong {
+        font-size: 21px;
     }
 
 
-    .access-panel {
-        padding: 18px;
-    }
+    footer {
+        flex-direction: column;
 
-
-    .access-title {
-        font-size: 24px;
-    }
-
-
-
-    /* PATH */
-
-    .path-header h2 {
-        font-size:
-            clamp(
-                35px,
-                9.5vw,
-                47px
-            );
-    }
-
-
-    .path-header {
-        padding-bottom: 36px;
-    }
-
-
-    .timeline-item {
-        grid-template-columns: 26px 1fr;
-
-        gap: 14px;
-    }
-
-
-    .timeline-content {
-        padding-bottom: 44px;
-    }
-
-
-    .timeline-content h3 {
-        font-size: 23px;
-    }
-
-
-    .timeline-content p {
-        font-size: 13px;
-
-        line-height: 1.6;
-    }
-
-
-    .journey-title {
-        font-size: 24px;
+        gap: 8px;
     }
 
 }
