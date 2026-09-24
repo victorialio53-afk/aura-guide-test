@@ -23,7 +23,9 @@
     <main class="app">
 
 
-        <!-- ОБЩАЯ ШАПКА -->
+        <!-- ========================= -->
+        <!-- SYSTEM HEADER -->
+        <!-- ========================= -->
 
         <header class="system-header">
 
@@ -46,7 +48,7 @@
             </div>
 
             <div class="system-subtitle">
-                GUIDE / USER INTERFACE
+                USER JOURNEY / GUIDE INTERFACE
             </div>
 
         </header>
@@ -54,136 +56,580 @@
 
 
         <!-- ========================= -->
-        <!-- ГЛАВНЫЙ ЭКРАН -->
+        <!-- HERO / AURI -->
         <!-- ========================= -->
 
-        <section
-            class="screen active"
-            id="home-screen"
-        >
+        <section class="hero">
 
-            <section class="welcome">
-
-                <img
-                    src="assets/auri.png"
-                    alt="AURI"
-                    class="welcome-auri"
-                >
+            <img
+                src="assets/auri.png"
+                alt="AURI"
+                class="hero-auri"
+            >
 
 
-                <div class="section-number">
-                    SYSTEM / 01
+            <div class="section-number">
+                SYSTEM / CONNECT
+            </div>
+
+
+            <h1>
+                ПРИВЕТ,<br>
+                ПОЛЬЗОВАТЕЛЬ.
+            </h1>
+
+
+            <p class="hero-description">
+                Ты подключен к системе навигации форума
+                для первокурсников AURA.
+            </p>
+
+
+
+            <!-- РЕПЛИКА AURI -->
+
+            <section class="auri-message-box">
+
+                <div class="auri-message-top">
+
+                    <span>
+                        AURI / VIRTUAL ASSISTANT
+                    </span>
+
+                    <span class="auri-status">
+                        ● ONLINE
+                    </span>
+
                 </div>
 
 
-                <h1>
-                    ПРИВЕТ,<br>
-                    ПОЛЬЗОВАТЕЛЬ.
-                </h1>
+                <div class="auri-message-content">
+
+                    <p id="auri-message">
+                        Привет, пользователь. Я помогу тебе пройти путь AURA.
+                    </p>
 
 
-                <p>
-                    Система навигации форума для первокурсников AURA.
-                </p>
+                    <div
+                        class="typing-indicator"
+                        id="typing-indicator"
+                        aria-hidden="true"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                </div>
 
 
-                <div class="user-status">
+                <a
+                    class="auri-3d-button"
+                    href="https://victorialio53-afk.github.io/aura-3d-viewer/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ПОСМОТРЕТЬ 3D AURI ↗
+                </a>
 
-                    <span>
-                        USER STATUS
-                    </span>
+            </section>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- CURRENT OBJECTIVE -->
+        <!-- ========================= -->
+
+        <section class="objective-panel">
+
+            <div class="objective-top">
+
+                <span>
+                    CURRENT OBJECTIVE
+                </span>
+
+                <span class="objective-status">
+                    ● ACTIVE
+                </span>
+
+            </div>
+
+
+            <h2>
+                ИЗУЧИ ПУТЬ AURA
+            </h2>
+
+
+            <p>
+                Ниже находится твоя карта прохождения системы.
+                Новые уровни будут открываться постепенно.
+            </p>
+
+
+            <button
+                class="system-button"
+                id="go-to-journey"
+            >
+                ОТКРЫТЬ КАРТУ ↓
+            </button>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- USER JOURNEY -->
+        <!-- ========================= -->
+
+        <section
+            class="journey"
+            id="journey"
+        >
+
+            <div class="journey-heading">
+
+                <div>
+
+                    <div class="section-number">
+                        USER JOURNEY
+                    </div>
+
+                    <h2>
+                        ПУТЬ ИГРОКА
+                    </h2>
+
+                </div>
+
+
+                <span class="journey-code">
+                    AURA / 2026
+                </span>
+
+            </div>
+
+
+
+            <!-- ========================= -->
+            <!-- LEVEL 00 -->
+            <!-- ========================= -->
+
+            <article class="level complete">
+
+                <div class="level-marker">
+
+                    <span class="level-dot"></span>
+
+                    <span class="level-line"></span>
+
+                </div>
+
+
+                <div class="level-body">
+
+                    <div class="level-meta">
+
+                        <span>
+                            LEVEL 00
+                        </span>
+
+                        <span class="status-complete">
+                            COMPLETE
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        ПОДКЛЮЧЕНИЕ К AURA
+                    </h3>
+
+
+                    <div class="level-subtitle">
+                        ЧТО ТАКОЕ ФОРУМ?
+                    </div>
+
+
+                    <p class="level-text">
+                        Здесь ты попадешь в команду с другими первокурсниками
+                        из разных факультетов, познакомишься с кураторами
+                        и Студенческим советом, узнаешь, как устроена
+                        студенческая жизнь, и попробуешь себя
+                        в командной работе.
+                    </p>
+
+
+
+                    <!-- ФОТО -->
+
+                    <div class="archive-header">
+
+                        <span>
+                            ARCHIVE / PREVIOUS FORUM
+                        </span>
+
+                        <span>
+                            03 FILES
+                        </span>
+
+                    </div>
+
+
+                    <div class="forum-gallery">
+
+                        <div class="gallery-item gallery-main">
+
+                            <img
+                                src="assets/forum-1.jpg"
+                                alt="Фото с прошлого форума"
+                            >
+
+                        </div>
+
+
+                        <div class="gallery-item">
+
+                            <img
+                                src="assets/forum-2.jpg"
+                                alt="Фото с прошлого форума"
+                            >
+
+                        </div>
+
+
+                        <div class="gallery-item">
+
+                            <img
+                                src="assets/forum-3.jpg"
+                                alt="Фото с прошлого форума"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ========================= -->
+            <!-- LEVEL 01 -->
+            <!-- ========================= -->
+
+            <article class="level waiting">
+
+                <div class="level-marker">
+
+                    <span class="level-dot"></span>
+
+                    <span class="level-line"></span>
+
+                </div>
+
+
+                <div class="level-body">
+
+                    <div class="level-meta">
+
+                        <span>
+                            LEVEL 01
+                        </span>
+
+                        <span>
+                            WAITING
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        РЕГИСТРАЦИЯ
+                    </h3>
+
+
+                    <p class="level-text">
+                        Первый шаг перед началом прохождения форума.
+                        Когда регистрация будет доступна, ссылка появится здесь.
+                    </p>
+
+
+                    <button
+                        class="system-button disabled-button"
+                        disabled
+                    >
+                        ДОСТУП ПОКА ЗАКРЫТ
+                    </button>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ========================= -->
+            <!-- LEVEL 02 -->
+            <!-- ========================= -->
+
+            <article class="level waiting">
+
+                <div class="level-marker">
+
+                    <span class="level-dot"></span>
+
+                    <span class="level-line"></span>
+
+                </div>
+
+
+                <div class="level-body">
+
+                    <div class="level-meta">
+
+                        <span>
+                            LEVEL 02
+                        </span>
+
+                        <span>
+                            WAITING
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        КОМАНДА
+                    </h3>
+
+
+                    <p class="level-text">
+                        После регистрации ты попадешь в команду
+                        с первокурсниками из разных факультетов
+                        и познакомишься со своими кураторами.
+                    </p>
+
+
+                    <div class="system-lock">
+                        DATA / WAITING FOR ACTIVATION
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ========================= -->
+            <!-- LEVEL 03 -->
+            <!-- ========================= -->
+
+            <article class="level locked">
+
+                <div class="level-marker">
+
+                    <span class="level-dot"></span>
+
+                    <span class="level-line"></span>
+
+                </div>
+
+
+                <div class="level-body">
+
+                    <div class="level-meta">
+
+                        <span>
+                            LEVEL 03
+                        </span>
+
+                        <span>
+                            LOCKED
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        ЗАДАНИЯ
+                    </h3>
+
+
+                    <p class="level-text">
+                        Командные задания будут загружаться
+                        в систему по мере прохождения форума.
+                    </p>
+
+
+                    <div class="system-lock">
+                        ACCESS / NOT AVAILABLE
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ========================= -->
+            <!-- LEVEL 04 -->
+            <!-- ========================= -->
+
+            <article class="level waiting">
+
+                <div class="level-marker">
+
+                    <span class="level-dot"></span>
+
+                    <span class="level-line"></span>
+
+                </div>
+
+
+                <div class="level-body">
+
+                    <div class="level-meta">
+
+                        <span>
+                            LEVEL 04
+                        </span>
+
+                        <span>
+                            WAITING
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        НЕВЫЕЗДНОЙ ЭТАП
+                    </h3>
+
+
+                    <div class="level-date">
+                        24–25 ОКТЯБРЯ
+                    </div>
+
+
+                    <p class="level-text">
+                        Два дня знакомства, командной работы
+                        и погружения в студенческую жизнь РУДН.
+                    </p>
+
+
+                    <div class="system-lock">
+                        SCHEDULE / WAITING FOR DATA
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- ========================= -->
+            <!-- LEVEL 05 -->
+            <!-- ========================= -->
+
+            <article class="level locked last-level">
+
+                <div class="level-marker">
+
+                    <span class="level-dot"></span>
+
+                </div>
+
+
+                <div class="level-body">
+
+                    <div class="level-meta">
+
+                        <span>
+                            LEVEL 05
+                        </span>
+
+                        <span>
+                            LOCKED
+                        </span>
+
+                    </div>
+
+
+                    <h3>
+                        ВЫЕЗДНОЙ ЭТАП
+                    </h3>
+
+
+                    <div class="level-date">
+                        II СЕМЕСТР
+                    </div>
+
+
+                    <p class="level-text">
+                        Следующий уровень системы AURA.
+                        Данные будут открыты позже.
+                    </p>
+
+
+                    <div class="system-lock">
+                        ACCESS / NOT AVAILABLE
+                    </div>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- ========================= -->
+        <!-- SYSTEM MODULES -->
+        <!-- ========================= -->
+
+        <section class="modules">
+
+            <div class="modules-header">
+
+                <span>
+                    SYSTEM MODULES
+                </span>
+
+                <span>
+                    02
+                </span>
+
+            </div>
+
+
+            <div class="module-card inactive-module">
+
+                <div>
+
+                    <small>
+                        PERSONAL MODULE
+                    </small>
 
                     <strong>
-                        ПЕРВОКУРСНИК
+                        МОЙ ЧЕК-ЛИСТ
                     </strong>
 
                 </div>
 
-            </section>
+                <span>
+                    SOON
+                </span>
+
+            </div>
 
 
-
-            <!-- МЕНЮ -->
-
-            <nav class="menu">
-
-                <button
-                    class="menu-button"
-                    id="open-start"
-                >
-
-                    <span>
-                        01 / СТАРТ
-                    </span>
-
-                    <span>
-                        →
-                    </span>
-
-                </button>
-
-
-                <button
-                    class="menu-button"
-                    id="open-path"
-                >
-
-                    <span>
-                        02 / МОЙ ПУТЬ
-                    </span>
-
-                    <span>
-                        →
-                    </span>
-
-                </button>
-
-
-                <button class="menu-button">
-
-                    <span>
-                        03 / ЧЕК-ЛИСТ
-                    </span>
-
-                    <span>
-                        0 / 8
-                    </span>
-
-                </button>
-
-
-                <button class="menu-button locked">
-
-                    <span>
-                        04 / ЗАДАНИЯ
-                    </span>
-
-                    <span>
-                        ОЖИДАНИЕ
-                    </span>
-
-                </button>
-
-
-                <button class="menu-button locked">
-
-                    <span>
-                        05 / РАСПИСАНИЕ
-                    </span>
-
-                    <span>
-                        ОЖИДАНИЕ
-                    </span>
-
-                </button>
-
-            </nav>
-
-
-
-            <!-- AURI PANEL -->
-
-            <section class="auri-panel">
+            <a
+                class="module-card active-module"
+                href="https://victorialio53-afk.github.io/aura-3d-viewer/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
 
                 <div>
 
@@ -192,477 +638,36 @@
                     </small>
 
                     <strong>
-                        AURI
+                        3D AURI
                     </strong>
 
                 </div>
 
-
                 <span>
-                    STATUS / ONLINE
+                    OPEN ↗
                 </span>
 
-            </section>
-
-
-
-            <footer>
-                AURA / RUDN / 2026
-            </footer>
+            </a>
 
         </section>
 
 
 
         <!-- ========================= -->
-        <!-- ЭКРАН СТАРТ -->
+        <!-- FOOTER -->
         <!-- ========================= -->
 
-        <section
-            class="screen"
-            id="start-screen"
-        >
+        <footer>
 
-            <button
-                class="back-button"
-                id="back-home-start"
-            >
-                ← НАЗАД
-            </button>
-
-
-            <div class="start-header">
-
-                <div class="section-number">
-                    01 / START
-                </div>
-
-
-                <h2>
-                    ФОРУМ ДЛЯ<br>
-                    ПЕРВОКУРСНИКОВ
-                </h2>
-
-
-                <div class="forum-name">
-                    AURA
-                </div>
-
-            </div>
-
-
-
-            <!-- ДАТЫ -->
-
-            <div class="date-panel">
-
-                <span>
-                    ДАТЫ НЕВЫЕЗДНОГО ЭТАПА
-                </span>
-
-                <strong>
-                    24–25 ОКТЯБРЯ
-                </strong>
-
-            </div>
-
-
-
-            <!-- ОПИСАНИЕ -->
-
-            <section class="start-description">
-
-                <div class="data-label">
-                    SYSTEM INFORMATION
-                </div>
-
-
-                <p>
-                    Здесь ты попадешь в команду с другими первокурсниками из разных факультетов, познакомишься с кураторами и Студенческим советом, узнаешь, как устроена студенческая жизнь, и попробуешь себя в командной работе.
-                </p>
-
-            </section>
-
-
-
-            <!-- ФОТО -->
-
-            <section class="forum-gallery">
-
-                <div class="gallery-header">
-
-                    <span>
-                        ARCHIVE / PREVIOUS FORUM
-                    </span>
-
-                    <span>
-                        03 FILES
-                    </span>
-
-                </div>
-
-
-                <div class="gallery-grid">
-
-                    <div class="gallery-item gallery-main">
-
-                        <img
-                            src="assets/forum-1.jpg"
-                            alt="Фото с прошлого форума"
-                        >
-
-                    </div>
-
-
-                    <div class="gallery-item">
-
-                        <img
-                            src="assets/forum-2.jpg"
-                            alt="Фото с прошлого форума"
-                        >
-
-                    </div>
-
-
-                    <div class="gallery-item">
-
-                        <img
-                            src="assets/forum-3.jpg"
-                            alt="Фото с прошлого форума"
-                        >
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- ДОСТУП -->
-
-            <section class="access-panel">
-
-                <div class="access-top">
-
-                    <span>
-                        ACCESS STATUS
-                    </span>
-
-                    <span class="access-open">
-                        ● OPEN
-                    </span>
-
-                </div>
-
-
-                <div class="access-title">
-                    ОТКРЫТО ДЛЯ ВСЕХ<br>
-                    ПЕРВОКУРСНИКОВ
-                </div>
-
-            </section>
-
-
-
-            <div class="system-note">
-
-                <span>
-                    AURA.SYSTEM
-                </span>
-
-                <span>
-                    CONNECTION STABLE
-                </span>
-
-            </div>
-
-
-
-            <footer>
+            <span>
                 AURA / RUDN / 2026
-            </footer>
+            </span>
 
-        </section>
+            <span>
+                CONNECTION STABLE
+            </span>
 
-
-
-        <!-- ========================= -->
-        <!-- ЭКРАН МОЙ ПУТЬ -->
-        <!-- ========================= -->
-
-        <section
-            class="screen"
-            id="path-screen"
-        >
-
-            <button
-                class="back-button"
-                id="back-home-path"
-            >
-                ← НАЗАД
-            </button>
-
-
-            <div class="path-header">
-
-                <div class="section-number">
-                    02 / MY PATH
-                </div>
-
-
-                <h2>
-                    ТВОЙ ПУТЬ<br>
-                    В СИСТЕМЕ AURA
-                </h2>
-
-
-                <div class="path-label">
-                    USER PROGRESS
-                </div>
-
-            </div>
-
-
-
-            <!-- ЛИНИЯ ПУТИ -->
-
-            <section class="timeline">
-
-
-                <!-- 01 -->
-
-                <article class="timeline-item active-stage">
-
-                    <div class="timeline-marker">
-
-                        <span class="timeline-dot"></span>
-
-                        <span class="timeline-line"></span>
-
-                    </div>
-
-
-                    <div class="timeline-content">
-
-                        <div class="timeline-number">
-                            01
-                        </div>
-
-                        <h3>
-                            РЕГИСТРАЦИЯ
-                        </h3>
-
-                        <p>
-                            Первый шаг в системе AURA.
-                        </p>
-
-
-                        <div class="stage-status active">
-                            STATUS / ACTIVE
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 02 -->
-
-                <article class="timeline-item">
-
-                    <div class="timeline-marker">
-
-                        <span class="timeline-dot"></span>
-
-                        <span class="timeline-line"></span>
-
-                    </div>
-
-
-                    <div class="timeline-content">
-
-                        <div class="timeline-number">
-                            02
-                        </div>
-
-                        <h3>
-                            КОМАНДА
-                        </h3>
-
-                        <p>
-                            После регистрации ты попадешь в команду с первокурсниками из разных факультетов.
-                        </p>
-
-
-                        <div class="stage-status">
-                            STATUS / WAITING
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 03 -->
-
-                <article class="timeline-item">
-
-                    <div class="timeline-marker">
-
-                        <span class="timeline-dot"></span>
-
-                        <span class="timeline-line"></span>
-
-                    </div>
-
-
-                    <div class="timeline-content">
-
-                        <div class="timeline-number">
-                            03
-                        </div>
-
-                        <h3>
-                            ЗАДАНИЯ
-                        </h3>
-
-                        <p>
-                            Командные задания появятся здесь, когда система откроет следующий этап.
-                        </p>
-
-
-                        <div class="stage-status locked-status">
-                            STATUS / LOCKED
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 04 -->
-
-                <article class="timeline-item">
-
-                    <div class="timeline-marker">
-
-                        <span class="timeline-dot"></span>
-
-                        <span class="timeline-line"></span>
-
-                    </div>
-
-
-                    <div class="timeline-content">
-
-                        <div class="timeline-number">
-                            04
-                        </div>
-
-                        <h3>
-                            НЕВЫЕЗДНОЙ ЭТАП
-                        </h3>
-
-                        <div class="timeline-date">
-                            24–25 ОКТЯБРЯ
-                        </div>
-
-                        <p>
-                            Два дня знакомства, командной работы и погружения в студенческую жизнь РУДН.
-                        </p>
-
-
-                        <div class="stage-status">
-                            STATUS / WAITING
-                        </div>
-
-                    </div>
-
-                </article>
-
-
-
-                <!-- 05 -->
-
-                <article class="timeline-item last">
-
-                    <div class="timeline-marker">
-
-                        <span class="timeline-dot"></span>
-
-                    </div>
-
-
-                    <div class="timeline-content">
-
-                        <div class="timeline-number">
-                            05
-                        </div>
-
-                        <h3>
-                            ВЫЕЗДНОЙ ЭТАП
-                        </h3>
-
-                        <div class="timeline-date">
-                            II СЕМЕСТР
-                        </div>
-
-                        <p>
-                            Следующий уровень AURA.
-                        </p>
-
-
-                        <div class="stage-status locked-status">
-                            STATUS / NOT AVAILABLE
-                        </div>
-
-                    </div>
-
-                </article>
-
-            </section>
-
-
-
-            <!-- НИЖНИЙ СИСТЕМНЫЙ БЛОК -->
-
-            <section class="journey-panel">
-
-                <div class="journey-top">
-
-                    <span>
-                        AURA.SYSTEM
-                    </span>
-
-                    <span class="journey-active">
-                        ● ACTIVE
-                    </span>
-
-                </div>
-
-
-                <div class="journey-title">
-                    USER JOURNEY
-                </div>
-
-
-                <p>
-                    Система будет обновлять твой путь по мере прохождения этапов форума.
-                </p>
-
-            </section>
-
-
-
-            <footer>
-                AURA / RUDN / 2026
-            </footer>
-
-        </section>
+        </footer>
 
 
     </main>
