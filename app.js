@@ -430,7 +430,9 @@ function updateChecklist() {
                     completedCount
                     /
                     totalCount
-                ) * 100;
+                )
+                *
+                100;
 
 
         checklistProgressBar.style.width =
@@ -492,7 +494,7 @@ updateChecklist();
 
 
 /* ================================================== */
-/* AURI SIGNAL RUN — TEST VERSION */
+/* AURI SIGNAL RUN V2 */
 /* ================================================== */
 
 const gameCanvas =
@@ -504,6 +506,12 @@ const gameCanvas =
 const gameStage =
     document.querySelector(
         ".game-stage-wrap"
+    );
+
+
+const gameHud =
+    document.querySelector(
+        ".game-hud"
     );
 
 
@@ -555,7 +563,6 @@ const gameRightButton =
     );
 
 
-
 const gameContext =
     gameCanvas
         ? gameCanvas.getContext("2d")
@@ -563,24 +570,251 @@ const gameContext =
 
 
 
+/* ================================================== */
+/* EXTRA HUD */
+/* ================================================== */
+
+let comboElement = null;
+let fragmentsElement = null;
+let shieldElement = null;
+let gameEventToast = null;
+
+
+
+function createExtraGameInterface() {
+
+    if (
+        gameHud &&
+        !document.getElementById(
+            "game-meta-bar"
+        )
+    ) {
+
+        const metaBar =
+            document.createElement(
+                "div"
+            );
+
+
+        metaBar.id =
+            "game-meta-bar";
+
+
+        metaBar.className =
+            "game-meta-bar";
+
+
+        metaBar.innerHTML = `
+
+            <div>
+                <small>COMBO</small>
+                <strong id="game-combo">
+                    x1
+                </strong>
+            </div>
+
+            <div>
+                <small>DATA</small>
+                <strong id="game-fragments">
+                    00
+                </strong>
+            </div>
+
+            <div>
+                <small>SHIELD</small>
+                <strong id="game-shield">
+                    OFF
+                </strong>
+            </div>
+
+        `;
+
+
+        gameHud.insertAdjacentElement(
+            "afterend",
+            metaBar
+        );
+
+    }
+
+
+    comboElement =
+        document.getElementById(
+            "game-combo"
+        );
+
+
+    fragmentsElement =
+        document.getElementById(
+            "game-fragments"
+        );
+
+
+    shieldElement =
+        document.getElementById(
+            "game-shield"
+        );
+
+
+
+    if (
+        gameStage &&
+        !document.getElementById(
+            "game-event-toast"
+        )
+    ) {
+
+        gameEventToast =
+            document.createElement(
+                "div"
+            );
+
+
+        gameEventToast.id =
+            "game-event-toast";
+
+
+        gameEventToast.className =
+            "game-event-toast";
+
+
+        gameStage.appendChild(
+            gameEventToast
+        );
+
+    }
+    else {
+
+        gameEventToast =
+            document.getElementById(
+                "game-event-toast"
+            );
+
+    }
+
+}
+
+
+
+createExtraGameInterface();
+
+
+
+/* ================================================== */
+/* STORAGE */
+/* ================================================== */
+
+const bestScoreKey =
+    "aura-signal-run-best-v2";
+
+
+const fragmentsKey =
+    "aura-signal-run-fragments-v1";
+
+
+
+function safeReadNumber(
+    key
+) {
+
+    try {
+
+        return (
+            Number(
+                localStorage.getItem(
+                    key
+                )
+            )
+            ||
+            0
+        );
+
+    }
+    catch (error) {
+
+        return 0;
+
+    }
+
+}
+
+
+
+function safeSaveNumber(
+    key,
+    value
+) {
+
+    try {
+
+        localStorage.setItem(
+            key,
+            String(
+                value
+            )
+        );
+
+    }
+    catch (error) {
+
+        console.log(
+            "AURA.SYSTEM / STORAGE ERROR"
+        );
+
+    }
+
+}
+
+
+
+let bestScore =
+    safeReadNumber(
+        bestScoreKey
+    );
+
+
+let totalFragments =
+    safeReadNumber(
+        fragmentsKey
+    );
+
+
+
+/* ================================================== */
+/* GAME STATE */
+/* ================================================== */
+
 let canvasWidth = 0;
 let canvasHeight = 0;
+
 let deviceScale = 1;
 
 
 let gameRunning = false;
+
 let animationFrame = null;
 
 let lastFrameTime = 0;
+
 let gameStartTime = 0;
+
 
 let score = 0;
 
-let speed = 150;
+
+/*
+    было 150
+    теперь старт сразу ощутимо живее
+*/
+
+let speed = 215;
+
 
 let spawnTimer = 0;
 
-let obstacles = [];
+
+let entities = [];
+
 
 let currentLane = 1;
 
@@ -590,18 +824,39 @@ let targetPlayerX = 0;
 
 
 
-const bestScoreKey =
-    "aura-signal-run-best-v1";
+/* бонусы */
+
+let combo = 0;
+
+let comboMultiplier = 1;
+
+let signalsCollected = 0;
+
+let runFragments = 0;
 
 
-let bestScore =
-    Number(
-        localStorage.getItem(
-            bestScoreKey
-        )
-    ) || 0;
+
+/* shield */
+
+let shieldActive = false;
+
+let shieldUntil = 0;
 
 
+
+/* random event */
+
+let surgeActive = false;
+
+let surgeUntil = 0;
+
+let nextSurgeAt = 0;
+
+
+
+/* ================================================== */
+/* AURI IMAGE */
+/* ================================================== */
 
 const auriGameImage =
     new Image();
@@ -612,17 +867,51 @@ auriGameImage.src =
 
 
 
-function formatGameScore(value) {
+/* ================================================== */
+/* HELPERS */
+/* ================================================== */
+
+function formatGameScore(
+    value
+) {
 
     return String(
         Math.max(
             0,
-            Math.floor(value)
+            Math.floor(
+                value
+            )
         )
     ).padStart(
         4,
         "0"
     );
+
+}
+
+
+
+function updateCombo() {
+
+    comboMultiplier =
+        Math.min(
+            4,
+            1
+            +
+            Math.floor(
+                combo / 5
+            )
+        );
+
+}
+
+
+
+function resetCombo() {
+
+    combo = 0;
+
+    comboMultiplier = 1;
 
 }
 
@@ -649,6 +938,43 @@ function updateGameHud() {
 
     }
 
+
+    if (comboElement) {
+
+        comboElement.textContent =
+            `x${comboMultiplier}`;
+
+    }
+
+
+    if (fragmentsElement) {
+
+        fragmentsElement.textContent =
+            String(
+                totalFragments
+            ).padStart(
+                2,
+                "0"
+            );
+
+    }
+
+
+    if (shieldElement) {
+
+        shieldElement.textContent =
+            shieldActive
+                ? "ON"
+                : "OFF";
+
+
+        shieldElement.classList.toggle(
+            "active",
+            shieldActive
+        );
+
+    }
+
 }
 
 
@@ -657,9 +983,61 @@ updateGameHud();
 
 
 
-/* ========================= */
+/* ================================================== */
+/* EVENT MESSAGE */
+/* ================================================== */
+
+let toastTimeout = null;
+
+
+
+function showGameEvent(
+    text,
+    duration = 1200
+) {
+
+    if (!gameEventToast) {
+        return;
+    }
+
+
+    gameEventToast.textContent =
+        text;
+
+
+    gameEventToast.classList.add(
+        "visible"
+    );
+
+
+    if (toastTimeout) {
+
+        clearTimeout(
+            toastTimeout
+        );
+
+    }
+
+
+    toastTimeout =
+        setTimeout(
+            () => {
+
+                gameEventToast.classList.remove(
+                    "visible"
+                );
+
+            },
+            duration
+        );
+
+}
+
+
+
+/* ================================================== */
 /* CANVAS SIZE */
-/* ========================= */
+/* ================================================== */
 
 function resizeGameCanvas() {
 
@@ -676,7 +1054,11 @@ function resizeGameCanvas() {
         gameStage.getBoundingClientRect();
 
 
-    if (rect.width <= 0) {
+    if (
+        rect.width <= 0
+        ||
+        rect.height <= 0
+    ) {
         return;
     }
 
@@ -745,11 +1127,13 @@ window.addEventListener(
 
 
 
-/* ========================= */
+/* ================================================== */
 /* LANES */
-/* ========================= */
+/* ================================================== */
 
-function laneCenter(laneIndex) {
+function laneCenter(
+    laneIndex
+) {
 
     const positions = [
         0.25,
@@ -770,7 +1154,9 @@ function laneCenter(laneIndex) {
 
 
 
-function movePlayer(direction) {
+function movePlayer(
+    direction
+) {
 
     if (!gameRunning) {
         return;
@@ -800,35 +1186,320 @@ function movePlayer(direction) {
 
 
 
-/* ========================= */
-/* OBSTACLES */
-/* ========================= */
+/* ================================================== */
+/* ENTITY SPAWNING */
+/* ================================================== */
 
-function spawnObstacle() {
+function randomLane(
+    excluded = []
+) {
 
-    const lane =
+    const available = [
+        0,
+        1,
+        2
+    ].filter(
+        (lane) =>
+            !excluded.includes(
+                lane
+            )
+    );
+
+
+    return available[
         Math.floor(
             Math.random()
             *
-            3
-        );
+            available.length
+        )
+    ];
+
+}
 
 
-    obstacles.push({
 
-        lane: lane,
+function createObstacle(
+    lane
+) {
 
-        y: -50,
+    entities.push({
 
-        height: 34,
+        type:
+            "obstacle",
 
-        passed: false
+        lane:
+            lane,
+
+        y:
+            -60,
+
+        passed:
+            false,
+
+        dead:
+            false
 
     });
 
 }
 
 
+
+function createSignal(
+    lane
+) {
+
+    entities.push({
+
+        type:
+            "signal",
+
+        lane:
+            lane,
+
+        y:
+            -40,
+
+        dead:
+            false
+
+    });
+
+}
+
+
+
+function createFragment(
+    lane
+) {
+
+    entities.push({
+
+        type:
+            "fragment",
+
+        lane:
+            lane,
+
+        y:
+            -40,
+
+        dead:
+            false
+
+    });
+
+}
+
+
+
+function createShield(
+    lane
+) {
+
+    entities.push({
+
+        type:
+            "shield",
+
+        lane:
+            lane,
+
+        y:
+            -40,
+
+        dead:
+            false
+
+    });
+
+}
+
+
+
+/* создаём одну строку игрового мира */
+
+function spawnRow(
+    elapsed
+) {
+
+    /*
+        Иногда вместо препятствия
+        появляется полностью бонусная строка.
+    */
+
+    if (
+        Math.random()
+        <
+        0.14
+    ) {
+
+        createSignal(
+            randomLane()
+        );
+
+
+        if (
+            Math.random()
+            <
+            0.45
+        ) {
+
+            createSignal(
+                randomLane()
+            );
+
+        }
+
+
+        return;
+
+    }
+
+
+
+    /*
+        После ~25 секунд иногда
+        появляется два препятствия,
+        но одна полоса ВСЕГДА остаётся свободной.
+    */
+
+    const doubleObstacle =
+        elapsed > 25
+        &&
+        Math.random() < 0.28;
+
+
+    const obstacleLanes = [];
+
+
+    const firstLane =
+        randomLane();
+
+
+    obstacleLanes.push(
+        firstLane
+    );
+
+
+    createObstacle(
+        firstLane
+    );
+
+
+    if (doubleObstacle) {
+
+        const secondLane =
+            randomLane(
+                obstacleLanes
+            );
+
+
+        obstacleLanes.push(
+            secondLane
+        );
+
+
+        createObstacle(
+            secondLane
+        );
+
+    }
+
+
+
+    const safeLanes =
+        [
+            0,
+            1,
+            2
+        ].filter(
+            (lane) =>
+                !obstacleLanes.includes(
+                    lane
+                )
+        );
+
+
+    if (
+        safeLanes.length === 0
+    ) {
+        return;
+    }
+
+
+    const rewardLane =
+        safeLanes[
+            Math.floor(
+                Math.random()
+                *
+                safeLanes.length
+            )
+        ];
+
+
+    const rewardRoll =
+        Math.random();
+
+
+
+    /*
+        редчайший бонус — shield
+    */
+
+    if (
+        rewardRoll
+        <
+        0.055
+    ) {
+
+        createShield(
+            rewardLane
+        );
+
+    }
+
+
+    /*
+        редкий DATA FRAGMENT
+    */
+
+    else if (
+        rewardRoll
+        <
+        0.13
+    ) {
+
+        createFragment(
+            rewardLane
+        );
+
+    }
+
+
+    /*
+        обычный signal node
+    */
+
+    else if (
+        rewardRoll
+        <
+        0.82
+    ) {
+
+        createSignal(
+            rewardLane
+        );
+
+    }
+
+}
+
+
+
+/* ================================================== */
+/* DRAW HELPERS */
+/* ================================================== */
 
 function roundedRect(
     ctx,
@@ -849,15 +1520,18 @@ function roundedRect(
 
     ctx.beginPath();
 
+
     ctx.moveTo(
         x + r,
         y
     );
 
+
     ctx.lineTo(
         x + width - r,
         y
     );
+
 
     ctx.quadraticCurveTo(
         x + width,
@@ -866,10 +1540,12 @@ function roundedRect(
         y + r
     );
 
+
     ctx.lineTo(
         x + width,
         y + height - r
     );
+
 
     ctx.quadraticCurveTo(
         x + width,
@@ -878,10 +1554,12 @@ function roundedRect(
         y + height
     );
 
+
     ctx.lineTo(
         x + r,
         y + height
     );
+
 
     ctx.quadraticCurveTo(
         x,
@@ -890,10 +1568,12 @@ function roundedRect(
         y + height - r
     );
 
+
     ctx.lineTo(
         x,
         y + r
     );
+
 
     ctx.quadraticCurveTo(
         x,
@@ -901,6 +1581,7 @@ function roundedRect(
         x + r,
         y
     );
+
 
     ctx.closePath();
 
@@ -908,9 +1589,9 @@ function roundedRect(
 
 
 
-/* ========================= */
+/* ================================================== */
 /* DRAW BACKGROUND */
-/* ========================= */
+/* ================================================== */
 
 function drawGameBackground() {
 
@@ -956,21 +1637,29 @@ function drawGameBackground() {
 
 
 
-    /* vertical lanes */
+    /* полосы */
 
     gameContext.save();
 
+
     gameContext.strokeStyle =
-        "rgba(108,58,199,0.20)";
+        surgeActive
+            ? "rgba(137,86,255,0.35)"
+            : "rgba(108,58,199,0.20)";
+
 
     gameContext.lineWidth =
         1;
 
 
-    [0.375, 0.625].forEach(
+    [
+        0.375,
+        0.625
+    ].forEach(
         (position) => {
 
             gameContext.beginPath();
+
 
             gameContext.moveTo(
                 canvasWidth
@@ -979,12 +1668,14 @@ function drawGameBackground() {
                 0
             );
 
+
             gameContext.lineTo(
                 canvasWidth
                 *
                 position,
                 canvasHeight
             );
+
 
             gameContext.stroke();
 
@@ -996,7 +1687,7 @@ function drawGameBackground() {
 
 
 
-    /* moving grid */
+    /* движущаяся сетка */
 
     const gridGap =
         48;
@@ -1004,44 +1695,52 @@ function drawGameBackground() {
 
     const movement =
         gameRunning
-            ? (
+            ?
+            (
                 (
                     performance.now()
                     /
-                    12
+                    (
+                        surgeActive
+                            ? 7
+                            : 10
+                    )
                 )
                 %
                 gridGap
             )
-            : 0;
+            :
+            0;
 
 
     gameContext.save();
 
+
     gameContext.strokeStyle =
         "rgba(255,255,255,0.035)";
-
-    gameContext.lineWidth =
-        1;
 
 
     for (
         let y = -gridGap;
-        y < canvasHeight + gridGap;
+        y <
+        canvasHeight + gridGap;
         y += gridGap
     ) {
 
         gameContext.beginPath();
+
 
         gameContext.moveTo(
             0,
             y + movement
         );
 
+
         gameContext.lineTo(
             canvasWidth,
             y + movement
         );
+
 
         gameContext.stroke();
 
@@ -1052,22 +1751,26 @@ function drawGameBackground() {
 
 
 
-    /* center glow */
+    /* нижнее фиолетовое свечение */
 
     const glow =
         gameContext.createRadialGradient(
             canvasWidth / 2,
-            canvasHeight * 0.72,
+            canvasHeight * 0.78,
             10,
             canvasWidth / 2,
-            canvasHeight * 0.72,
-            canvasWidth * 0.5
+            canvasHeight * 0.78,
+            canvasWidth * 0.55
         );
 
 
     glow.addColorStop(
         0,
-        "rgba(108,58,199,0.14)"
+        surgeActive
+            ?
+            "rgba(137,86,255,0.23)"
+            :
+            "rgba(108,58,199,0.14)"
     );
 
 
@@ -1092,23 +1795,29 @@ function drawGameBackground() {
 
 
 
-/* ========================= */
-/* DRAW OBSTACLE */
-/* ========================= */
+/* ================================================== */
+/* DRAW ENTITIES */
+/* ================================================== */
 
-function drawObstacle(obstacle) {
+function drawObstacle(
+    entity
+) {
 
     const center =
         laneCenter(
-            obstacle.lane
+            entity.lane
         );
 
 
     const width =
         Math.max(
-            54,
+            58,
             canvasWidth * 0.17
         );
+
+
+    const height =
+        38;
 
 
     const x =
@@ -1121,25 +1830,25 @@ function drawObstacle(obstacle) {
 
 
     gameContext.shadowColor =
-        "rgba(108,58,199,0.85)";
+        "rgba(108,58,199,0.9)";
 
 
     gameContext.shadowBlur =
-        14;
+        15;
 
 
     roundedRect(
         gameContext,
         x,
-        obstacle.y,
+        entity.y,
         width,
-        obstacle.height,
-        7
+        height,
+        8
     );
 
 
     gameContext.fillStyle =
-        "rgba(108,58,199,0.25)";
+        "rgba(108,58,199,0.24)";
 
 
     gameContext.fill();
@@ -1160,15 +1869,14 @@ function drawObstacle(obstacle) {
         0;
 
 
-    /* inner line */
-
     gameContext.beginPath();
+
 
     gameContext.moveTo(
         x + 10,
-        obstacle.y
+        entity.y
         +
-        obstacle.height / 2
+        height / 2
     );
 
 
@@ -1178,14 +1886,87 @@ function drawObstacle(obstacle) {
         width
         -
         10,
-        obstacle.y
+        entity.y
         +
-        obstacle.height / 2
+        height / 2
     );
 
 
     gameContext.strokeStyle =
         "rgba(255,255,255,0.32)";
+
+
+    gameContext.stroke();
+
+
+    gameContext.restore();
+
+}
+
+
+
+function drawSignal(
+    entity
+) {
+
+    const x =
+        laneCenter(
+            entity.lane
+        );
+
+
+    const y =
+        entity.y;
+
+
+    gameContext.save();
+
+
+    gameContext.shadowColor =
+        "rgba(137,86,255,0.95)";
+
+
+    gameContext.shadowBlur =
+        22;
+
+
+    gameContext.beginPath();
+
+
+    gameContext.arc(
+        x,
+        y,
+        10,
+        0,
+        Math.PI * 2
+    );
+
+
+    gameContext.fillStyle =
+        "#8B5DFF";
+
+
+    gameContext.fill();
+
+
+    gameContext.shadowBlur =
+        0;
+
+
+    gameContext.beginPath();
+
+
+    gameContext.arc(
+        x,
+        y,
+        17,
+        0,
+        Math.PI * 2
+    );
+
+
+    gameContext.strokeStyle =
+        "rgba(139,93,255,0.38)";
 
 
     gameContext.lineWidth =
@@ -1201,20 +1982,176 @@ function drawObstacle(obstacle) {
 
 
 
-/* ========================= */
-/* DRAW PLAYER */
-/* ========================= */
+function drawFragment(
+    entity
+) {
 
-function drawPlayer() {
+    const x =
+        laneCenter(
+            entity.lane
+        );
+
+
+    const y =
+        entity.y;
+
+
+    gameContext.save();
+
+
+    gameContext.translate(
+        x,
+        y
+    );
+
+
+    gameContext.rotate(
+        Math.PI / 4
+    );
+
+
+    gameContext.shadowColor =
+        "rgba(255,255,255,0.8)";
+
+
+    gameContext.shadowBlur =
+        20;
+
+
+    gameContext.fillStyle =
+        "#d8cbff";
+
+
+    gameContext.fillRect(
+        -9,
+        -9,
+        18,
+        18
+    );
+
+
+    gameContext.strokeStyle =
+        "#8B5DFF";
+
+
+    gameContext.lineWidth =
+        2;
+
+
+    gameContext.strokeRect(
+        -12,
+        -12,
+        24,
+        24
+    );
+
+
+    gameContext.restore();
+
+}
+
+
+
+function drawShield(
+    entity
+) {
+
+    const x =
+        laneCenter(
+            entity.lane
+        );
+
+
+    const y =
+        entity.y;
+
+
+    gameContext.save();
+
+
+    gameContext.shadowColor =
+        "rgba(207,190,255,0.9)";
+
+
+    gameContext.shadowBlur =
+        24;
+
+
+    gameContext.beginPath();
+
+
+    gameContext.arc(
+        x,
+        y,
+        18,
+        0,
+        Math.PI * 2
+    );
+
+
+    gameContext.strokeStyle =
+        "#d8cbff";
+
+
+    gameContext.lineWidth =
+        3;
+
+
+    gameContext.stroke();
+
+
+    gameContext.beginPath();
+
+
+    gameContext.arc(
+        x,
+        y,
+        8,
+        0,
+        Math.PI * 2
+    );
+
+
+    gameContext.fillStyle =
+        "#6C3AC7";
+
+
+    gameContext.fill();
+
+
+    gameContext.restore();
+
+}
+
+
+
+/* ================================================== */
+/* PLAYER */
+/* ================================================== */
+
+function getPlayerSize() {
+
+    /*
+        модель стала заметно больше,
+        чем в V1
+    */
+
+    return Math.max(
+        96,
+        Math.min(
+            122,
+            canvasWidth * 0.245
+        )
+    );
+
+}
+
+
+
+function getPlayerRect() {
 
     const playerSize =
-        Math.max(
-            72,
-            Math.min(
-                92,
-                canvasWidth * 0.20
-            )
-        );
+        getPlayerSize();
 
 
     const y =
@@ -1222,28 +2159,93 @@ function drawPlayer() {
         -
         playerSize
         -
-        34;
+        38;
 
 
-    playerX +=
-        (
-            targetPlayerX
-            -
+    return {
+
+        x:
             playerX
-        )
-        *
-        0.18;
+            -
+            playerSize * 0.22,
+
+        y:
+            y
+            +
+            playerSize * 0.13,
+
+        width:
+            playerSize * 0.44,
+
+        height:
+            playerSize * 0.70
+
+    };
+
+}
+
+
+
+function drawPlayer() {
+
+    const playerSize =
+        getPlayerSize();
+
+
+    const y =
+        canvasHeight
+        -
+        playerSize
+        -
+        38;
 
 
     gameContext.save();
 
 
+
+    if (shieldActive) {
+
+        gameContext.shadowColor =
+            "rgba(190,166,255,0.95)";
+
+
+        gameContext.shadowBlur =
+            28;
+
+
+        gameContext.beginPath();
+
+
+        gameContext.arc(
+            playerX,
+            y + playerSize / 2,
+            playerSize * 0.47,
+            0,
+            Math.PI * 2
+        );
+
+
+        gameContext.strokeStyle =
+            "rgba(205,187,255,0.75)";
+
+
+        gameContext.lineWidth =
+            2;
+
+
+        gameContext.stroke();
+
+    }
+
+
+
     gameContext.shadowColor =
-        "rgba(108,58,199,0.55)";
+        "rgba(108,58,199,0.60)";
 
 
     gameContext.shadowBlur =
-        22;
+        24;
 
 
     if (
@@ -1263,68 +2265,17 @@ function drawPlayer() {
         );
 
     }
-    else {
-
-        gameContext.fillStyle =
-            "#6C3AC7";
-
-
-        roundedRect(
-            gameContext,
-            playerX
-            -
-            28,
-            y + 8,
-            56,
-            70,
-            24
-        );
-
-
-        gameContext.fill();
-
-    }
 
 
     gameContext.restore();
-
-
-
-    return {
-
-        x:
-            playerX
-            -
-            playerSize
-            *
-            0.24,
-
-        y:
-            y
-            +
-            playerSize
-            *
-            0.14,
-
-        width:
-            playerSize
-            *
-            0.48,
-
-        height:
-            playerSize
-            *
-            0.68
-
-    };
 
 }
 
 
 
-/* ========================= */
+/* ================================================== */
 /* COLLISION */
-/* ========================= */
+/* ================================================== */
 
 function rectanglesOverlap(
     first,
@@ -1345,9 +2296,72 @@ function rectanglesOverlap(
 
 
 
-/* ========================= */
-/* DRAW */
-/* ========================= */
+function getEntityRect(
+    entity
+) {
+
+    const center =
+        laneCenter(
+            entity.lane
+        );
+
+
+    if (
+        entity.type ===
+        "obstacle"
+    ) {
+
+        const width =
+            Math.max(
+                58,
+                canvasWidth * 0.17
+            );
+
+
+        return {
+
+            x:
+                center
+                -
+                width / 2,
+
+            y:
+                entity.y,
+
+            width:
+                width,
+
+            height:
+                38
+
+        };
+
+    }
+
+
+    return {
+
+        x:
+            center - 17,
+
+        y:
+            entity.y - 17,
+
+        width:
+            34,
+
+        height:
+            34
+
+    };
+
+}
+
+
+
+/* ================================================== */
+/* DRAW GAME */
+/* ================================================== */
 
 function drawGame() {
 
@@ -1363,8 +2377,62 @@ function drawGame() {
     drawGameBackground();
 
 
-    obstacles.forEach(
-        drawObstacle
+    entities.forEach(
+        (entity) => {
+
+            if (entity.dead) {
+                return;
+            }
+
+
+            if (
+                entity.type ===
+                "obstacle"
+            ) {
+
+                drawObstacle(
+                    entity
+                );
+
+            }
+
+
+            else if (
+                entity.type ===
+                "signal"
+            ) {
+
+                drawSignal(
+                    entity
+                );
+
+            }
+
+
+            else if (
+                entity.type ===
+                "fragment"
+            ) {
+
+                drawFragment(
+                    entity
+                );
+
+            }
+
+
+            else if (
+                entity.type ===
+                "shield"
+            ) {
+
+                drawShield(
+                    entity
+                );
+
+            }
+
+        }
     );
 
 
@@ -1374,11 +2442,188 @@ function drawGame() {
 
 
 
-/* ========================= */
-/* LOOP */
-/* ========================= */
+/* ================================================== */
+/* COLLECT */
+/* ================================================== */
 
-function gameLoop(now) {
+function collectEntity(
+    entity
+) {
+
+    entity.dead =
+        true;
+
+
+
+    if (
+        entity.type ===
+        "signal"
+    ) {
+
+        combo++;
+
+        updateCombo();
+
+
+        signalsCollected++;
+
+
+        const points =
+            25
+            *
+            comboMultiplier;
+
+
+        score +=
+            points;
+
+
+        if (
+            combo > 0
+            &&
+            combo % 5 === 0
+        ) {
+
+            showGameEvent(
+                `COMBO x${comboMultiplier}`
+            );
+
+        }
+
+    }
+
+
+
+    else if (
+        entity.type ===
+        "fragment"
+    ) {
+
+        runFragments++;
+
+        totalFragments++;
+
+
+        safeSaveNumber(
+            fragmentsKey,
+            totalFragments
+        );
+
+
+        score +=
+            150;
+
+
+        showGameEvent(
+            "DATA FRAGMENT +1"
+        );
+
+    }
+
+
+
+    else if (
+        entity.type ===
+        "shield"
+    ) {
+
+        shieldActive =
+            true;
+
+
+        shieldUntil =
+            performance.now()
+            +
+            7000;
+
+
+        score +=
+            50;
+
+
+        showGameEvent(
+            "SHIELD ONLINE"
+        );
+
+    }
+
+
+    updateGameHud();
+
+}
+
+
+
+/* ================================================== */
+/* SIGNAL SURGE */
+/* ================================================== */
+
+function updateSignalSurge(
+    now
+) {
+
+    if (
+        surgeActive
+        &&
+        now >= surgeUntil
+    ) {
+
+        surgeActive =
+            false;
+
+
+        showGameEvent(
+            "SIGNAL NORMALIZED"
+        );
+
+    }
+
+
+
+    if (
+        !surgeActive
+        &&
+        now >= nextSurgeAt
+    ) {
+
+        surgeActive =
+            true;
+
+
+        surgeUntil =
+            now
+            +
+            5000;
+
+
+        nextSurgeAt =
+            surgeUntil
+            +
+            15000
+            +
+            Math.random()
+            *
+            9000;
+
+
+        showGameEvent(
+            "SIGNAL SURGE",
+            1600
+        );
+
+    }
+
+}
+
+
+
+/* ================================================== */
+/* GAME LOOP */
+/* ================================================== */
+
+function gameLoop(
+    now
+) {
 
     if (!gameRunning) {
         return;
@@ -1420,49 +2665,114 @@ function gameLoop(now) {
         1000;
 
 
+
+    /* ========================= */
+    /* SPEED */
+    /* ========================= */
+
     speed =
         Math.min(
-            350,
-            150
+            430,
+
+            215
             +
             elapsed
             *
-            5
+            6.2
         );
 
+
+
+    updateSignalSurge(
+        now
+    );
+
+
+
+    const currentSpeed =
+        speed
+        *
+        (
+            surgeActive
+                ? 1.18
+                : 1
+        );
+
+
+
+    /* ========================= */
+    /* PLAYER MOVEMENT */
+    /* ========================= */
+
+    playerX +=
+        (
+            targetPlayerX
+            -
+            playerX
+        )
+        *
+        Math.min(
+            1,
+            delta * 14
+        );
+
+
+
+    /* ========================= */
+    /* SPAWN */
+    /* ========================= */
 
     spawnTimer -=
         deltaMilliseconds;
 
 
-    if (spawnTimer <= 0) {
+    if (
+        spawnTimer <= 0
+    ) {
 
-        spawnObstacle();
+        spawnRow(
+            elapsed
+        );
 
 
-        spawnTimer =
+        const basicInterval =
             Math.max(
-                620,
-                1150
+                510,
+
+                980
                 -
                 elapsed
                 *
-                9
+                7
+            );
+
+
+        spawnTimer =
+            (
+                surgeActive
+                    ?
+                    basicInterval * 0.74
+                    :
+                    basicInterval
             )
             +
             Math.random()
             *
-            280;
+            220;
 
     }
 
 
 
-    obstacles.forEach(
-        (obstacle) => {
+    /* ========================= */
+    /* MOVE ENTITIES */
+    /* ========================= */
 
-            obstacle.y +=
-                speed
+    entities.forEach(
+        (entity) => {
+
+            entity.y +=
+                currentSpeed
                 *
                 delta;
 
@@ -1471,69 +2781,147 @@ function gameLoop(now) {
 
 
 
-    const playerRectangle =
-        drawPlayerCollisionPosition();
+    const playerRect =
+        getPlayerRect();
 
 
+
+    /* ========================= */
+    /* COLLISIONS */
+    /* ========================= */
 
     for (
-        const obstacle
-        of obstacles
+        const entity
+        of entities
     ) {
 
-        const width =
-            Math.max(
-                54,
-                canvasWidth * 0.17
+        if (entity.dead) {
+            continue;
+        }
+
+
+        const entityRect =
+            getEntityRect(
+                entity
             );
-
-
-        const obstacleRectangle = {
-
-            x:
-                laneCenter(
-                    obstacle.lane
-                )
-                -
-                width / 2,
-
-            y:
-                obstacle.y,
-
-            width:
-                width,
-
-            height:
-                obstacle.height
-
-        };
 
 
         if (
             rectanglesOverlap(
-                playerRectangle,
-                obstacleRectangle
+                playerRect,
+                entityRect
             )
         ) {
 
-            gameOver();
 
-            return;
+            /*
+                OBSTACLE
+            */
+
+            if (
+                entity.type ===
+                "obstacle"
+            ) {
+
+                if (
+                    shieldActive
+                ) {
+
+                    entity.dead =
+                        true;
+
+
+                    shieldActive =
+                        false;
+
+
+                    shieldUntil =
+                        0;
+
+
+                    score +=
+                        30;
+
+
+                    showGameEvent(
+                        "SHIELD ABSORBED"
+                    );
+
+
+                    updateGameHud();
+
+
+                    continue;
+
+                }
+
+
+                gameOver();
+
+                return;
+
+            }
+
+
+
+            /*
+                BONUS
+            */
+
+            collectEntity(
+                entity
+            );
 
         }
 
 
+
+        /* ========================= */
+        /* MISSED SIGNAL */
+        /* ========================= */
+
         if (
-            !obstacle.passed
+            entity.type ===
+            "signal"
             &&
-            obstacle.y
+            entity.y
             >
-            playerRectangle.y
+            canvasHeight
             +
-            playerRectangle.height
+            30
+            &&
+            !entity.dead
         ) {
 
-            obstacle.passed =
+            entity.dead =
+                true;
+
+
+            resetCombo();
+
+
+            updateGameHud();
+
+        }
+
+
+
+        /* obstacle safely passed */
+
+        if (
+            entity.type ===
+            "obstacle"
+            &&
+            !entity.passed
+            &&
+            entity.y
+            >
+            playerRect.y
+            +
+            playerRect.height
+        ) {
+
+            entity.passed =
                 true;
 
 
@@ -1546,28 +2934,68 @@ function gameLoop(now) {
 
 
 
-    obstacles =
-        obstacles.filter(
-            (obstacle) =>
-                obstacle.y
+    /* ========================= */
+    /* SHIELD TIMER */
+    /* ========================= */
+
+    if (
+        shieldActive
+        &&
+        now >= shieldUntil
+    ) {
+
+        shieldActive =
+            false;
+
+
+        showGameEvent(
+            "SHIELD OFFLINE"
+        );
+
+
+        updateGameHud();
+
+    }
+
+
+
+    /* ========================= */
+    /* CLEANUP */
+    /* ========================= */
+
+    entities =
+        entities.filter(
+            (entity) =>
+
+                !entity.dead
+                &&
+                entity.y
                 <
                 canvasHeight
                 +
-                80
+                100
         );
 
 
 
+    /* passive score */
+
     score +=
         delta
         *
-        5;
+        (
+            surgeActive
+                ? 10
+                : 6
+        );
+
 
 
     updateGameHud();
 
 
     drawGame();
+
 
 
     animationFrame =
@@ -1579,70 +3007,16 @@ function gameLoop(now) {
 
 
 
-/* player's collision rect without drawing */
-
-function drawPlayerCollisionPosition() {
-
-    const playerSize =
-        Math.max(
-            72,
-            Math.min(
-                92,
-                canvasWidth * 0.20
-            )
-        );
-
-
-    const y =
-        canvasHeight
-        -
-        playerSize
-        -
-        34;
-
-
-    return {
-
-        x:
-            playerX
-            -
-            playerSize
-            *
-            0.24,
-
-        y:
-            y
-            +
-            playerSize
-            *
-            0.14,
-
-        width:
-            playerSize
-            *
-            0.48,
-
-        height:
-            playerSize
-            *
-            0.68
-
-    };
-
-}
-
-
-
-/* ========================= */
-/* START */
-/* ========================= */
+/* ================================================== */
+/* START GAME */
+/* ================================================== */
 
 function startGame() {
 
     resizeGameCanvas();
 
 
-    obstacles = [];
+    entities = [];
 
 
     currentLane =
@@ -1664,11 +3038,39 @@ function startGame() {
 
 
     speed =
-        150;
+        215;
 
 
     spawnTimer =
-        850;
+        720;
+
+
+    combo =
+        0;
+
+
+    comboMultiplier =
+        1;
+
+
+    signalsCollected =
+        0;
+
+
+    runFragments =
+        0;
+
+
+    shieldActive =
+        false;
+
+
+    shieldUntil =
+        0;
+
+
+    surgeActive =
+        false;
 
 
     lastFrameTime =
@@ -1679,11 +3081,22 @@ function startGame() {
         performance.now();
 
 
+    nextSurgeAt =
+        gameStartTime
+        +
+        13000
+        +
+        Math.random()
+        *
+        7000;
+
+
     gameRunning =
         true;
 
 
     updateGameHud();
+
 
 
     if (gameOverlay) {
@@ -1695,6 +3108,13 @@ function startGame() {
     }
 
 
+
+    showGameEvent(
+        "CONNECTION STABLE"
+    );
+
+
+
     animationFrame =
         requestAnimationFrame(
             gameLoop
@@ -1704,9 +3124,9 @@ function startGame() {
 
 
 
-/* ========================= */
-/* STOP */
-/* ========================= */
+/* ================================================== */
+/* STOP GAME */
+/* ================================================== */
 
 function stopGame() {
 
@@ -1730,9 +3150,9 @@ function stopGame() {
 
 
 
-/* ========================= */
+/* ================================================== */
 /* GAME OVER */
-/* ========================= */
+/* ================================================== */
 
 function gameOver() {
 
@@ -1745,6 +3165,10 @@ function gameOver() {
         );
 
 
+    const previousBest =
+        bestScore;
+
+
     if (
         finalScore
         >
@@ -1755,11 +3179,9 @@ function gameOver() {
             finalScore;
 
 
-        localStorage.setItem(
+        safeSaveNumber(
             bestScoreKey,
-            String(
-                bestScore
-            )
+            bestScore
         );
 
     }
@@ -1768,20 +3190,27 @@ function gameOver() {
     updateGameHud();
 
 
+
     if (gameOverlayTitle) {
 
         gameOverlayTitle.textContent =
-            "CONNECTION LOST";
+            finalScore > previousBest
+                ?
+                "NEW RECORD"
+                :
+                "CONNECTION LOST";
 
     }
+
 
 
     if (gameOverlayText) {
 
         gameOverlayText.textContent =
-            `SCORE ${formatGameScore(finalScore)} / BEST ${formatGameScore(bestScore)}`;
+            `SCORE ${formatGameScore(finalScore)} / DATA +${runFragments} / BEST ${formatGameScore(bestScore)}`;
 
     }
+
 
 
     if (gameStartButton) {
@@ -1790,6 +3219,7 @@ function gameOver() {
             "RECONNECT";
 
     }
+
 
 
     if (gameOverlay) {
@@ -1804,9 +3234,9 @@ function gameOver() {
 
 
 
-/* ========================= */
-/* GAME BUTTONS */
-/* ========================= */
+/* ================================================== */
+/* GAME CONTROLS */
+/* ================================================== */
 
 if (gameStartButton) {
 
@@ -1861,9 +3291,7 @@ if (gameRightButton) {
 
 
 
-/* ========================= */
-/* KEYBOARD */
-/* ========================= */
+/* keyboard */
 
 window.addEventListener(
     "keydown",
@@ -1875,9 +3303,11 @@ window.addEventListener(
 
 
         if (
-            event.key === "ArrowLeft"
+            event.key ===
+            "ArrowLeft"
             ||
-            event.key.toLowerCase() === "a"
+            event.key.toLowerCase() ===
+            "a"
         ) {
 
             movePlayer(
@@ -1888,9 +3318,11 @@ window.addEventListener(
 
 
         if (
-            event.key === "ArrowRight"
+            event.key ===
+            "ArrowRight"
             ||
-            event.key.toLowerCase() === "d"
+            event.key.toLowerCase() ===
+            "d"
         ) {
 
             movePlayer(
@@ -1904,9 +3336,9 @@ window.addEventListener(
 
 
 
-/* ========================= */
-/* SWIPE */
-/* ========================= */
+/* ================================================== */
+/* SWIPE / TAP */
+/* ================================================== */
 
 let pointerStartX =
     null;
@@ -1945,6 +3377,11 @@ if (gameCanvas) {
                 pointerStartX;
 
 
+
+            /*
+                SWIPE
+            */
+
             if (
                 Math.abs(
                     difference
@@ -1960,6 +3397,13 @@ if (gameCanvas) {
                 );
 
             }
+
+
+
+            /*
+                TAP
+            */
+
             else {
 
                 const rect =
@@ -1976,8 +3420,10 @@ if (gameCanvas) {
                     relativeX
                     <
                     rect.width / 2
-                        ? -1
-                        : 1
+                        ?
+                        -1
+                        :
+                        1
                 );
 
             }
@@ -1993,7 +3439,9 @@ if (gameCanvas) {
 
 
 
-/* initial draw */
+/* ================================================== */
+/* INITIAL DRAW */
+/* ================================================== */
 
 auriGameImage.addEventListener(
     "load",
@@ -2017,5 +3465,5 @@ console.log(
 
 
 console.log(
-    "AURA.SYSTEM / SIGNAL RUN TEST READY"
+    "AURA.SYSTEM / SIGNAL RUN V2 READY"
 );
