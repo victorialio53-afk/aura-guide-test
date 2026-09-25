@@ -17,9 +17,12 @@
 
 <body>
 
-    <!-- ФОНОВЫЕ ДЕКОРАТИВНЫЕ ПЛЮСЫ -->
+    <!-- ========================= -->
+    <!-- ФОНОВЫЕ ПЛЮСЫ -->
+    <!-- ========================= -->
 
     <div class="decor-layer" aria-hidden="true">
+
         <span class="decor-cross cross-1"></span>
         <span class="decor-cross cross-2"></span>
         <span class="decor-cross cross-3"></span>
@@ -32,6 +35,7 @@
         <span class="decor-cross cross-10"></span>
         <span class="decor-cross cross-11"></span>
         <span class="decor-cross cross-12"></span>
+
     </div>
 
 
@@ -40,7 +44,7 @@
 
 
         <!-- ========================= -->
-        <!-- HEADER -->
+        <!-- ОБЩАЯ ШАПКА -->
         <!-- ========================= -->
 
         <header class="system-header">
@@ -73,667 +77,909 @@
 
 
 
-        <!-- ========================= -->
-        <!-- HERO -->
-        <!-- ========================= -->
+        <!-- ================================================== -->
+        <!-- ГЛАВНЫЙ ЭКРАН -->
+        <!-- ================================================== -->
 
-        <section class="hero">
-
-            <div class="section-number">
-                SYSTEM / CONNECT
-            </div>
-
-
-            <h1>
-                ПРИВЕТ,<br>
-                ПОЛЬЗОВАТЕЛЬ
-            </h1>
-
-
-            <p class="hero-description">
-                Ты подключен к системе навигации форума
-                для первокурсников AURA
-            </p>
-
+        <section
+            class="app-screen active-screen"
+            id="main-screen"
+        >
 
 
             <!-- ========================= -->
-            <!-- AURI -->
+            <!-- HERO -->
             <!-- ========================= -->
 
-            <section class="assistant-zone">
+            <section class="hero">
+
+                <div class="section-number">
+                    SYSTEM / CONNECT
+                </div>
 
 
-                <!-- РЕПЛИКА -->
-
-                <div class="auri-message-panel">
-
-                    <div class="auri-message-inner">
-
-
-                        <div class="auri-message-label">
-                            AURI / VIRTUAL ASSISTANT
-                        </div>
+                <h1>
+                    ПРИВЕТ,<br>
+                    ПОЛЬЗОВАТЕЛЬ
+                </h1>
 
 
-                        <div class="auri-message-content">
+                <p class="hero-description">
+                    Ты подключен к системе навигации форума
+                    для первокурсников AURA
+                </p>
 
-                            <p id="auri-message">
-                                Привет, пользователь. Я помогу тебе пройти путь AURA.
-                            </p>
 
 
-                            <div
-                                class="typing-indicator"
-                                id="typing-indicator"
-                                aria-hidden="true"
-                            >
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                <!-- ========================= -->
+                <!-- AURI -->
+                <!-- ========================= -->
+
+                <section class="assistant-zone">
+
+
+                    <!-- РЕПЛИКА AURI -->
+
+                    <div class="auri-message-panel">
+
+                        <div class="auri-message-inner">
+
+
+                            <div class="auri-message-label">
+                                AURI / VIRTUAL ASSISTANT
+                            </div>
+
+
+                            <div class="auri-message-content">
+
+                                <p id="auri-message">
+                                    Привет, пользователь. Я помогу тебе пройти путь AURA.
+                                </p>
+
+
+                                <div
+                                    class="typing-indicator"
+                                    id="typing-indicator"
+                                    aria-hidden="true"
+                                >
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+
                             </div>
 
                         </div>
 
                     </div>
 
+
+
+                    <!-- КАПСУЛА -->
+
+                    <img
+                        src="assets/auri.png"
+                        alt="AURI"
+                        class="hero-auri"
+                    >
+
+
+
+                    <!-- ИНДИКАТОР СПРАВА -->
+
+                    <div
+                        class="signal-rail"
+                        aria-hidden="true"
+                    >
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span class="active"></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                </section>
+
+            </section>
+
+
+
+            <!-- ========================= -->
+            <!-- USER JOURNEY -->
+            <!-- ========================= -->
+
+            <section
+                class="journey"
+                id="journey"
+            >
+
+
+                <div class="journey-heading">
+
+                    <div>
+
+                        <div class="section-number">
+                            USER JOURNEY
+                        </div>
+
+                        <h2>
+                            ПУТЬ ИГРОКА
+                        </h2>
+
+                    </div>
+
                 </div>
 
 
 
-                <!-- ПЕРСОНАЖ -->
+                <!-- ========================= -->
+                <!-- LEVEL 00 -->
+                <!-- ========================= -->
 
-                <img
-                    src="assets/auri.png"
-                    alt="AURI"
-                    class="hero-auri"
+                <article class="level complete">
+
+                    <div class="level-marker">
+
+                        <span class="level-dot"></span>
+                        <span class="level-line"></span>
+
+                    </div>
+
+
+                    <div class="level-body">
+
+                        <div class="level-meta">
+
+                            <span>
+                                LEVEL 00
+                            </span>
+
+                            <span class="status-complete">
+                                COMPLETE
+                            </span>
+
+                        </div>
+
+
+                        <h3>
+                            ПОДКЛЮЧЕНИЕ К AURA
+                        </h3>
+
+
+                        <div class="level-subtitle">
+                            ЧТО ТАКОЕ ФОРУМ?
+                        </div>
+
+
+                        <p class="level-text">
+                            Здесь ты попадешь в команду с другими первокурсниками
+                            из разных факультетов, познакомишься с кураторами
+                            и Студенческим советом, узнаешь, как устроена
+                            студенческая жизнь, и попробуешь себя
+                            в командной работе.
+                        </p>
+
+
+
+                        <!-- ФОТОГРАФИИ -->
+
+                        <div class="archive-header">
+
+                            <span>
+                                ARCHIVE / PREVIOUS FORUM
+                            </span>
+
+                            <span>
+                                03 FILES
+                            </span>
+
+                        </div>
+
+
+                        <div class="forum-gallery">
+
+                            <div class="gallery-item gallery-main">
+
+                                <img
+                                    src="assets/forum-1.jpg"
+                                    alt="Фото с прошлого форума"
+                                >
+
+                            </div>
+
+
+                            <div class="gallery-item">
+
+                                <img
+                                    src="assets/forum-2.jpg"
+                                    alt="Фото с прошлого форума"
+                                >
+
+                            </div>
+
+
+                            <div class="gallery-item">
+
+                                <img
+                                    src="assets/forum-3.jpg"
+                                    alt="Фото с прошлого форума"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- ========================= -->
+                <!-- LEVEL 01 -->
+                <!-- ========================= -->
+
+                <article class="level active-level">
+
+                    <div class="level-marker">
+
+                        <span class="level-dot"></span>
+                        <span class="level-line"></span>
+
+                    </div>
+
+
+                    <div class="level-body">
+
+                        <div class="level-meta">
+
+                            <span>
+                                LEVEL 01
+                            </span>
+
+                            <span class="status-active">
+                                ACTIVE
+                            </span>
+
+                        </div>
+
+
+                        <h3>
+                            РЕГИСТРАЦИЯ
+                        </h3>
+
+
+                        <p class="level-text">
+                            Первый шаг перед началом прохождения форума.
+                            Регистрация уже открыта.
+                        </p>
+
+
+                        <a
+                            class="action-button compact-button"
+                            href="https://forms.yandex.ru/cloud/6aa4274e90fa7b6d13660f66"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            ЗАРЕГИСТРИРОВАТЬСЯ
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- ========================= -->
+                <!-- LEVEL 02 -->
+                <!-- ========================= -->
+
+                <article class="level waiting">
+
+                    <div class="level-marker">
+
+                        <span class="level-dot"></span>
+                        <span class="level-line"></span>
+
+                    </div>
+
+
+                    <div class="level-body">
+
+                        <div class="level-meta">
+
+                            <span>
+                                LEVEL 02
+                            </span>
+
+                            <span>
+                                WAITING
+                            </span>
+
+                        </div>
+
+
+                        <h3>
+                            КОМАНДА
+                        </h3>
+
+
+                        <p class="level-text">
+                            После регистрации ты попадешь в команду
+                            с первокурсниками из разных факультетов
+                            и познакомишься со своими кураторами.
+                        </p>
+
+
+                        <div class="data-status">
+                            DATA / WAITING FOR ACTIVATION
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- ========================= -->
+                <!-- LEVEL 03 -->
+                <!-- ========================= -->
+
+                <article class="level locked">
+
+                    <div class="level-marker">
+
+                        <span class="level-dot"></span>
+                        <span class="level-line"></span>
+
+                    </div>
+
+
+                    <div class="level-body">
+
+                        <div class="level-meta">
+
+                            <span>
+                                LEVEL 03
+                            </span>
+
+                            <span>
+                                LOCKED
+                            </span>
+
+                        </div>
+
+
+                        <h3>
+                            ЗАДАНИЯ
+                        </h3>
+
+
+                        <p class="level-text">
+                            Командные задания будут загружаться
+                            в систему по мере прохождения форума.
+                        </p>
+
+
+                        <div class="data-status">
+                            ACCESS / NOT AVAILABLE
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- ========================= -->
+                <!-- LEVEL 04 -->
+                <!-- ========================= -->
+
+                <article class="level waiting">
+
+                    <div class="level-marker">
+
+                        <span class="level-dot"></span>
+                        <span class="level-line"></span>
+
+                    </div>
+
+
+                    <div class="level-body">
+
+                        <div class="level-meta">
+
+                            <span>
+                                LEVEL 04
+                            </span>
+
+                            <span>
+                                WAITING
+                            </span>
+
+                        </div>
+
+
+                        <h3>
+                            НЕВЫЕЗДНОЙ ЭТАП
+                        </h3>
+
+
+                        <div class="level-date">
+                            24–25 ОКТЯБРЯ
+                        </div>
+
+
+                        <p class="level-text">
+                            Два дня знакомства, командной работы
+                            и погружения в студенческую жизнь РУДН.
+                        </p>
+
+
+                        <div class="data-status">
+                            SCHEDULE / WAITING FOR DATA
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- ========================= -->
+                <!-- LEVEL 05 -->
+                <!-- ========================= -->
+
+                <article class="level locked last-level">
+
+                    <div class="level-marker">
+
+                        <span class="level-dot"></span>
+
+                    </div>
+
+
+                    <div class="level-body">
+
+                        <div class="level-meta">
+
+                            <span>
+                                LEVEL 05
+                            </span>
+
+                            <span>
+                                LOCKED
+                            </span>
+
+                        </div>
+
+
+                        <h3>
+                            ВЫЕЗДНОЙ ЭТАП
+                        </h3>
+
+
+                        <div class="level-date">
+                            II СЕМЕСТР
+                        </div>
+
+
+                        <p class="level-text">
+                            Следующий уровень системы AURA.
+                            Данные будут открыты позже.
+                        </p>
+
+
+                        <div class="data-status">
+                            ACCESS / NOT AVAILABLE
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+
+            <!-- ========================= -->
+            <!-- SYSTEM MODULES -->
+            <!-- ========================= -->
+
+            <section class="modules">
+
+
+                <div class="modules-header">
+
+                    <span>
+                        SYSTEM MODULES
+                    </span>
+
+                    <span>
+                        03
+                    </span>
+
+                </div>
+
+
+
+                <!-- ========================= -->
+                <!-- CHECKLIST -->
+                <!-- ========================= -->
+
+                <button
+                    class="module-card active-module checklist-module"
+                    id="open-checklist"
+                    type="button"
                 >
 
+                    <div>
+
+                        <small>
+                            PERSONAL MODULE
+                        </small>
+
+                        <strong>
+                            МОЙ ЧЕК-ЛИСТ
+                        </strong>
+
+                    </div>
 
 
-                <!-- ДЕКОРАТИВНЫЙ ИНДИКАТОР -->
+                    <span id="checklist-module-progress">
+                        0 / 8
+                    </span>
 
-                <div
-                    class="signal-rail"
-                    aria-hidden="true"
+                </button>
+
+
+
+                <!-- ========================= -->
+                <!-- 3D AURI -->
+                <!-- ========================= -->
+
+                <a
+                    class="module-card active-module"
+                    href="https://victorialio53-afk.github.io/aura-3d-viewer/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                 >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span class="active"></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
+
+                    <div>
+
+                        <small>
+                            VIRTUAL ASSISTANT
+                        </small>
+
+                        <strong>
+                            3D AURI
+                        </strong>
+
+                    </div>
+
+
+                    <span>
+                        OPEN
+                    </span>
+
+                </a>
+
+
+
+                <!-- ========================= -->
+                <!-- GAME -->
+                <!-- ========================= -->
+
+                <button
+                    class="module-card game-module locked-module"
+                    type="button"
+                    disabled
+                >
+
+                    <div>
+
+                        <small>
+                            BONUS MODULE
+                        </small>
+
+                        <strong>
+                            AURI // SIGNAL RUN
+                        </strong>
+
+                        <em>
+                            SYSTEM GAME
+                        </em>
+
+                    </div>
+
+
+                    <span>
+                        LOCKED
+                    </span>
+
+                </button>
+
+            </section>
+
+
+
+            <!-- ========================= -->
+            <!-- FOOTER -->
+            <!-- ========================= -->
+
+            <footer>
+
+                <span>
+                    AURA / RUDN / 2026
+                </span>
+
+                <span>
+                    CONNECTION STABLE
+                </span>
+
+            </footer>
+
+
+        </section>
+
+
+
+        <!-- ================================================== -->
+        <!-- CHECKLIST SCREEN -->
+        <!-- ================================================== -->
+
+        <section
+            class="app-screen"
+            id="checklist-screen"
+        >
+
+
+            <!-- НАЗАД -->
+
+            <button
+                class="back-button"
+                id="back-from-checklist"
+                type="button"
+            >
+                ← НАЗАД
+            </button>
+
+
+
+            <!-- HEADER CHECKLIST -->
+
+            <section class="checklist-header">
+
+                <div class="section-number">
+                    03 / CHECKLIST
+                </div>
+
+
+                <h2>
+                    ТВОЙ<br>
+                    ЧЕК-ЛИСТ
+                </h2>
+
+
+                <p>
+                    Отмечай выполненные пункты.
+                    Система сохранит твой прогресс на этом устройстве.
+                </p>
+
+            </section>
+
+
+
+            <!-- PROGRESS -->
+
+            <section class="checklist-progress-panel">
+
+                <div class="checklist-progress-top">
+
+                    <span>
+                        USER PROGRESS
+                    </span>
+
+                    <strong id="checklist-progress-number">
+                        0 / 8
+                    </strong>
+
+                </div>
+
+
+                <div class="checklist-progress-track">
+
+                    <div
+                        class="checklist-progress-bar"
+                        id="checklist-progress-bar"
+                    ></div>
+
+                </div>
+
+
+                <div class="checklist-progress-status">
+                    SYSTEM / TRACKING ACTIVE
                 </div>
 
             </section>
 
 
 
-            <!-- 3D -->
+            <!-- CHECKLIST -->
 
-            <a
-                class="text-link"
-                href="https://victorialio53-afk.github.io/aura-3d-viewer/"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                ПОСМОТРЕТЬ 3D AURI
-            </a>
+            <section class="checklist-list">
 
-        </section>
 
+                <button
+                    class="checklist-item"
+                    type="button"
+                    data-check-id="registration"
+                >
 
+                    <span class="check-box"></span>
 
-        <!-- ========================= -->
-        <!-- CURRENT OBJECTIVE -->
-        <!-- ========================= -->
+                    <span class="check-text">
+                        зарегистрироваться на форум
+                    </span>
 
-        <section class="objective-panel">
+                </button>
 
-            <div class="objective-meta">
 
-                <span>
-                    CURRENT OBJECTIVE
-                </span>
 
-                <span class="objective-active">
-                    ● ACTIVE
-                </span>
+                <button
+                    class="checklist-item"
+                    type="button"
+                    data-check-id="team"
+                >
 
-            </div>
+                    <span class="check-box"></span>
 
+                    <span class="check-text">
+                        познакомиться со своей командой
+                    </span>
 
-            <h2>
-                ЗАРЕГИСТРИРОВАТЬСЯ
-                НА ФОРУМ
-            </h2>
+                </button>
 
 
-            <p>
-                Регистрация уже открыта.
-                После неё система переведёт тебя
-                к следующему этапу пути AURA.
-            </p>
 
+                <button
+                    class="checklist-item"
+                    type="button"
+                    data-check-id="curators"
+                >
 
-            <a
-                class="action-button"
-                href="https://forms.yandex.ru/cloud/6aa4274e90fa7b6d13660f66"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                ЗАРЕГИСТРИРОВАТЬСЯ
-            </a>
+                    <span class="check-box"></span>
 
-        </section>
+                    <span class="check-text">
+                        познакомиться с кураторами
+                    </span>
 
+                </button>
 
 
-        <!-- ========================= -->
-        <!-- JOURNEY -->
-        <!-- ========================= -->
 
-        <section
-            class="journey"
-            id="journey"
-        >
+                <button
+                    class="checklist-item"
+                    type="button"
+                    data-check-id="student-council"
+                >
 
+                    <span class="check-box"></span>
 
-            <div class="journey-heading">
+                    <span class="check-text">
+                        узнать, как устроен Студенческий совет
+                    </span>
 
-                <div>
+                </button>
 
-                    <div class="section-number">
-                        USER JOURNEY
-                    </div>
 
-                    <h2>
-                        ПУТЬ ИГРОКА
-                    </h2>
 
-                </div>
+                <button
+                    class="checklist-item"
+                    type="button"
+                    data-check-id="directions"
+                >
 
+                    <span class="check-box"></span>
 
-                <span class="journey-code">
-                    AURA / 2026
-                </span>
+                    <span class="check-text">
+                        разобраться в направлениях и возможностях
+                    </span>
 
-            </div>
+                </button>
 
 
 
-            <!-- ========================= -->
-            <!-- LEVEL 00 -->
-            <!-- ========================= -->
+                <button
+                    class="checklist-item"
+                    type="button"
+                    data-check-id="people"
+                >
 
-            <article class="level complete">
+                    <span class="check-box"></span>
 
-                <div class="level-marker">
-                    <span class="level-dot"></span>
-                    <span class="level-line"></span>
-                </div>
+                    <span class="check-text">
+                        найти новых знакомых
+                    </span>
 
+                </button>
 
-                <div class="level-body">
 
-                    <div class="level-meta">
 
-                        <span>
-                            LEVEL 00
-                        </span>
+                <button
+                    class="checklist-item"
+                    type="button"
+                    data-check-id="teamwork"
+                >
 
-                        <span class="status-complete">
-                            COMPLETE
-                        </span>
+                    <span class="check-box"></span>
 
-                    </div>
+                    <span class="check-text">
+                        попробовать себя в командной работе
+                    </span>
 
+                </button>
 
-                    <h3>
-                        ПОДКЛЮЧЕНИЕ К AURA
-                    </h3>
 
 
-                    <div class="level-subtitle">
-                        ЧТО ТАКОЕ ФОРУМ?
-                    </div>
+                <button
+                    class="checklist-item"
+                    type="button"
+                    data-check-id="maximum"
+                >
 
+                    <span class="check-box"></span>
 
-                    <p class="level-text">
-                        Здесь ты попадешь в команду с другими первокурсниками
-                        из разных факультетов, познакомишься с кураторами
-                        и Студенческим советом, узнаешь, как устроена
-                        студенческая жизнь, и попробуешь себя
-                        в командной работе.
-                    </p>
+                    <span class="check-text">
+                        получить максимум от форума
+                    </span>
 
+                </button>
 
+            </section>
 
-                    <!-- ФОТОГРАФИИ -->
 
-                    <div class="archive-header">
 
-                        <span>
-                            ARCHIVE / PREVIOUS FORUM
-                        </span>
+            <!-- COMPLETE MESSAGE -->
 
-                        <span>
-                            03 FILES
-                        </span>
-
-                    </div>
-
-
-                    <div class="forum-gallery">
-
-                        <div class="gallery-item gallery-main">
-                            <img
-                                src="assets/forum-1.jpg"
-                                alt="Фото с прошлого форума"
-                            >
-                        </div>
-
-
-                        <div class="gallery-item">
-                            <img
-                                src="assets/forum-2.jpg"
-                                alt="Фото с прошлого форума"
-                            >
-                        </div>
-
-
-                        <div class="gallery-item">
-                            <img
-                                src="assets/forum-3.jpg"
-                                alt="Фото с прошлого форума"
-                            >
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- ========================= -->
-            <!-- LEVEL 01 -->
-            <!-- ========================= -->
-
-            <article class="level active-level">
-
-                <div class="level-marker">
-                    <span class="level-dot"></span>
-                    <span class="level-line"></span>
-                </div>
-
-
-                <div class="level-body">
-
-                    <div class="level-meta">
-
-                        <span>
-                            LEVEL 01
-                        </span>
-
-                        <span class="status-active">
-                            ACTIVE
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        РЕГИСТРАЦИЯ
-                    </h3>
-
-
-                    <p class="level-text">
-                        Первый шаг перед началом прохождения форума.
-                        Регистрация уже открыта.
-                    </p>
-
-
-                    <a
-                        class="action-button compact-button"
-                        href="https://forms.yandex.ru/cloud/6aa4274e90fa7b6d13660f66"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
-                        ЗАРЕГИСТРИРОВАТЬСЯ
-                    </a>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- ========================= -->
-            <!-- LEVEL 02 -->
-            <!-- ========================= -->
-
-            <article class="level waiting">
-
-                <div class="level-marker">
-                    <span class="level-dot"></span>
-                    <span class="level-line"></span>
-                </div>
-
-
-                <div class="level-body">
-
-                    <div class="level-meta">
-
-                        <span>
-                            LEVEL 02
-                        </span>
-
-                        <span>
-                            WAITING
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        КОМАНДА
-                    </h3>
-
-
-                    <p class="level-text">
-                        После регистрации ты попадешь в команду
-                        с первокурсниками из разных факультетов
-                        и познакомишься со своими кураторами.
-                    </p>
-
-
-                    <div class="data-status">
-                        DATA / WAITING FOR ACTIVATION
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- ========================= -->
-            <!-- LEVEL 03 -->
-            <!-- ========================= -->
-
-            <article class="level locked">
-
-                <div class="level-marker">
-                    <span class="level-dot"></span>
-                    <span class="level-line"></span>
-                </div>
-
-
-                <div class="level-body">
-
-                    <div class="level-meta">
-
-                        <span>
-                            LEVEL 03
-                        </span>
-
-                        <span>
-                            LOCKED
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        ЗАДАНИЯ
-                    </h3>
-
-
-                    <p class="level-text">
-                        Командные задания будут загружаться
-                        в систему по мере прохождения форума.
-                    </p>
-
-
-                    <div class="data-status">
-                        ACCESS / NOT AVAILABLE
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- ========================= -->
-            <!-- LEVEL 04 -->
-            <!-- ========================= -->
-
-            <article class="level waiting">
-
-                <div class="level-marker">
-                    <span class="level-dot"></span>
-                    <span class="level-line"></span>
-                </div>
-
-
-                <div class="level-body">
-
-                    <div class="level-meta">
-
-                        <span>
-                            LEVEL 04
-                        </span>
-
-                        <span>
-                            WAITING
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        НЕВЫЕЗДНОЙ ЭТАП
-                    </h3>
-
-
-                    <div class="level-date">
-                        24–25 ОКТЯБРЯ
-                    </div>
-
-
-                    <p class="level-text">
-                        Два дня знакомства, командной работы
-                        и погружения в студенческую жизнь РУДН.
-                    </p>
-
-
-                    <div class="data-status">
-                        SCHEDULE / WAITING FOR DATA
-                    </div>
-
-                </div>
-
-            </article>
-
-
-
-            <!-- ========================= -->
-            <!-- LEVEL 05 -->
-            <!-- ========================= -->
-
-            <article class="level locked last-level">
-
-                <div class="level-marker">
-                    <span class="level-dot"></span>
-                </div>
-
-
-                <div class="level-body">
-
-                    <div class="level-meta">
-
-                        <span>
-                            LEVEL 05
-                        </span>
-
-                        <span>
-                            LOCKED
-                        </span>
-
-                    </div>
-
-
-                    <h3>
-                        ВЫЕЗДНОЙ ЭТАП
-                    </h3>
-
-
-                    <div class="level-date">
-                        II СЕМЕСТР
-                    </div>
-
-
-                    <p class="level-text">
-                        Следующий уровень системы AURA.
-                        Данные будут открыты позже.
-                    </p>
-
-
-                    <div class="data-status">
-                        ACCESS / NOT AVAILABLE
-                    </div>
-
-                </div>
-
-            </article>
-
-
-        </section>
-
-
-
-        <!-- ========================= -->
-        <!-- SYSTEM MODULES -->
-        <!-- ========================= -->
-
-        <section class="modules">
-
-
-            <div class="modules-header">
-
-                <span>
-                    SYSTEM MODULES
-                </span>
-
-                <span>
-                    03
-                </span>
-
-            </div>
-
-
-
-            <!-- ЧЕК-ЛИСТ -->
-
-            <div class="module-card inactive-module">
-
-                <div>
-
-                    <small>
-                        PERSONAL MODULE
-                    </small>
-
-                    <strong>
-                        МОЙ ЧЕК-ЛИСТ
-                    </strong>
-
-                </div>
-
-
-                <span>
-                    SOON
-                </span>
-
-            </div>
-
-
-
-            <!-- 3D AURI -->
-
-            <a
-                class="module-card active-module"
-                href="https://victorialio53-afk.github.io/aura-3d-viewer/"
-                target="_blank"
-                rel="noopener noreferrer"
+            <section
+                class="checklist-complete"
+                id="checklist-complete"
             >
 
-                <div>
+                <small>
+                    SYSTEM MESSAGE
+                </small>
 
-                    <small>
-                        VIRTUAL ASSISTANT
-                    </small>
+                <strong>
+                    CHECKLIST COMPLETE
+                </strong>
 
-                    <strong>
-                        3D AURI
-                    </strong>
+                <p>
+                    Все пункты выполнены.
+                    Пользователь полностью синхронизирован с системой AURA.
+                </p>
 
-                </div>
-
-
-                <span>
-                    OPEN
-                </span>
-
-            </a>
+            </section>
 
 
 
-            <!-- ОТЗЫВЫ -->
-
-            <div class="module-card inactive-module">
-
-                <div>
-
-                    <small>
-                        COMMUNITY ARCHIVE
-                    </small>
-
-                    <strong>
-                        ОТЗЫВЫ С ПРОШЛЫХ ФОРУМОВ
-                    </strong>
-
-                </div>
-
+            <footer>
 
                 <span>
-                    SOON
+                    AURA / RUDN / 2026
                 </span>
 
-            </div>
+                <span>
+                    PERSONAL MODULE
+                </span>
+
+            </footer>
+
 
         </section>
-
-
-
-        <!-- ========================= -->
-        <!-- FOOTER -->
-        <!-- ========================= -->
-
-        <footer>
-
-            <span>
-                AURA / RUDN / 2026
-            </span>
-
-            <span>
-                CONNECTION STABLE
-            </span>
-
-        </footer>
 
 
     </main>
