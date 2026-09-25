@@ -44,7 +44,7 @@
 
 
         <!-- ========================= -->
-        <!-- ОБЩАЯ ШАПКА -->
+        <!-- ШАПКА -->
         <!-- ========================= -->
 
         <header class="system-header">
@@ -118,8 +118,6 @@
                 <section class="assistant-zone">
 
 
-                    <!-- РЕПЛИКА AURI -->
-
                     <div class="auri-message-panel">
 
                         <div class="auri-message-inner">
@@ -155,8 +153,6 @@
 
 
 
-                    <!-- КАПСУЛА -->
-
                     <img
                         src="assets/auri.png"
                         alt="AURI"
@@ -165,12 +161,11 @@
 
 
 
-                    <!-- ИНДИКАТОР СПРАВА -->
-
                     <div
                         class="signal-rail"
                         aria-hidden="true"
                     >
+
                         <span></span>
                         <span></span>
                         <span></span>
@@ -178,6 +173,7 @@
                         <span></span>
                         <span></span>
                         <span></span>
+
                     </div>
 
                 </section>
@@ -214,9 +210,7 @@
 
 
 
-                <!-- ========================= -->
                 <!-- LEVEL 00 -->
-                <!-- ========================= -->
 
                 <article class="level complete">
 
@@ -262,8 +256,6 @@
                         </p>
 
 
-
-                        <!-- ФОТОГРАФИИ -->
 
                         <div class="archive-header">
 
@@ -317,9 +309,7 @@
 
 
 
-                <!-- ========================= -->
                 <!-- LEVEL 01 -->
-                <!-- ========================= -->
 
                 <article class="level active-level">
 
@@ -372,9 +362,7 @@
 
 
 
-                <!-- ========================= -->
                 <!-- LEVEL 02 -->
-                <!-- ========================= -->
 
                 <article class="level waiting">
 
@@ -423,9 +411,7 @@
 
 
 
-                <!-- ========================= -->
                 <!-- LEVEL 03 -->
-                <!-- ========================= -->
 
                 <article class="level locked">
 
@@ -473,9 +459,7 @@
 
 
 
-                <!-- ========================= -->
                 <!-- LEVEL 04 -->
-                <!-- ========================= -->
 
                 <article class="level waiting">
 
@@ -528,9 +512,7 @@
 
 
 
-                <!-- ========================= -->
                 <!-- LEVEL 05 -->
-                <!-- ========================= -->
 
                 <article class="level locked last-level">
 
@@ -605,9 +587,7 @@
 
 
 
-                <!-- ========================= -->
                 <!-- CHECKLIST -->
-                <!-- ========================= -->
 
                 <button
                     class="module-card active-module checklist-module"
@@ -636,9 +616,7 @@
 
 
 
-                <!-- ========================= -->
                 <!-- 3D AURI -->
-                <!-- ========================= -->
 
                 <a
                     class="module-card active-module"
@@ -668,35 +646,33 @@
 
 
 
-                <!-- ========================= -->
                 <!-- GAME -->
-                <!-- ========================= -->
 
                 <button
-                    class="module-card game-module locked-module"
+                    class="module-card active-module game-module"
+                    id="open-game"
                     type="button"
-                    disabled
                 >
 
                     <div>
 
                         <small>
-                            BONUS MODULE
+                            BONUS MODULE / TEST BUILD
                         </small>
 
                         <strong>
-                            AURI // SIGNAL RUN
+                            ИГРА // AURI SIGNAL RUN
                         </strong>
 
                         <em>
-                            SYSTEM GAME
+                            DODGE / SURVIVE / CONNECT
                         </em>
 
                     </div>
 
 
                     <span>
-                        LOCKED
+                        PLAY
                     </span>
 
                 </button>
@@ -704,10 +680,6 @@
             </section>
 
 
-
-            <!-- ========================= -->
-            <!-- FOOTER -->
-            <!-- ========================= -->
 
             <footer>
 
@@ -727,7 +699,7 @@
 
 
         <!-- ================================================== -->
-        <!-- CHECKLIST SCREEN -->
+        <!-- CHECKLIST -->
         <!-- ================================================== -->
 
         <section
@@ -735,8 +707,6 @@
             id="checklist-screen"
         >
 
-
-            <!-- НАЗАД -->
 
             <button
                 class="back-button"
@@ -747,8 +717,6 @@
             </button>
 
 
-
-            <!-- HEADER CHECKLIST -->
 
             <section class="checklist-header">
 
@@ -771,8 +739,6 @@
             </section>
 
 
-
-            <!-- PROGRESS -->
 
             <section class="checklist-progress-panel">
 
@@ -807,8 +773,6 @@
 
 
 
-            <!-- CHECKLIST -->
-
             <section class="checklist-list">
 
 
@@ -817,15 +781,11 @@
                     type="button"
                     data-check-id="registration"
                 >
-
                     <span class="check-box"></span>
-
                     <span class="check-text">
                         зарегистрироваться на форум
                     </span>
-
                 </button>
-
 
 
                 <button
@@ -833,15 +793,11 @@
                     type="button"
                     data-check-id="team"
                 >
-
                     <span class="check-box"></span>
-
                     <span class="check-text">
                         познакомиться со своей командой
                     </span>
-
                 </button>
-
 
 
                 <button
@@ -849,15 +805,11 @@
                     type="button"
                     data-check-id="curators"
                 >
-
                     <span class="check-box"></span>
-
                     <span class="check-text">
                         познакомиться с кураторами
                     </span>
-
                 </button>
-
 
 
                 <button
@@ -865,15 +817,11 @@
                     type="button"
                     data-check-id="student-council"
                 >
-
                     <span class="check-box"></span>
-
                     <span class="check-text">
                         узнать, как устроен Студенческий совет
                     </span>
-
                 </button>
-
 
 
                 <button
@@ -881,15 +829,11 @@
                     type="button"
                     data-check-id="directions"
                 >
-
                     <span class="check-box"></span>
-
                     <span class="check-text">
                         разобраться в направлениях и возможностях
                     </span>
-
                 </button>
-
 
 
                 <button
@@ -897,15 +841,11 @@
                     type="button"
                     data-check-id="people"
                 >
-
                     <span class="check-box"></span>
-
                     <span class="check-text">
                         найти новых знакомых
                     </span>
-
                 </button>
-
 
 
                 <button
@@ -913,15 +853,11 @@
                     type="button"
                     data-check-id="teamwork"
                 >
-
                     <span class="check-box"></span>
-
                     <span class="check-text">
                         попробовать себя в командной работе
                     </span>
-
                 </button>
-
 
 
                 <button
@@ -929,20 +865,15 @@
                     type="button"
                     data-check-id="maximum"
                 >
-
                     <span class="check-box"></span>
-
                     <span class="check-text">
                         получить максимум от форума
                     </span>
-
                 </button>
 
             </section>
 
 
-
-            <!-- COMPLETE MESSAGE -->
 
             <section
                 class="checklist-complete"
@@ -974,6 +905,185 @@
 
                 <span>
                     PERSONAL MODULE
+                </span>
+
+            </footer>
+
+
+        </section>
+
+
+
+        <!-- ================================================== -->
+        <!-- GAME SCREEN -->
+        <!-- ================================================== -->
+
+        <section
+            class="app-screen"
+            id="game-screen"
+        >
+
+
+            <button
+                class="back-button"
+                id="back-from-game"
+                type="button"
+            >
+                ← НАЗАД
+            </button>
+
+
+
+            <section class="game-header">
+
+                <div class="section-number">
+                    BONUS MODULE / TEST BUILD
+                </div>
+
+
+                <h2>
+                    AURI<br>
+                    SIGNAL RUN
+                </h2>
+
+
+                <p>
+                    Уклоняйся от системных помех.
+                    Чем дольше соединение стабильно,
+                    тем выше скорость и твой результат.
+                </p>
+
+            </section>
+
+
+
+            <section class="game-panel">
+
+
+                <div class="game-hud">
+
+                    <div>
+                        <small>SCORE</small>
+                        <strong id="game-score">
+                            0000
+                        </strong>
+                    </div>
+
+
+                    <div>
+                        <small>BEST</small>
+                        <strong id="game-best">
+                            0000
+                        </strong>
+                    </div>
+
+
+                    <span class="game-online">
+                        ● SIGNAL
+                    </span>
+
+                </div>
+
+
+
+                <div class="game-stage-wrap">
+
+                    <canvas
+                        id="game-canvas"
+                        aria-label="AURI Signal Run"
+                    ></canvas>
+
+
+                    <div
+                        class="game-overlay"
+                        id="game-overlay"
+                    >
+
+                        <div class="game-overlay-code">
+                            AURA.SYSTEM / SIMULATION
+                        </div>
+
+
+                        <h3 id="game-overlay-title">
+                            READY?
+                        </h3>
+
+
+                        <p id="game-overlay-text">
+                            Проводи пальцем влево и вправо,
+                            чтобы перемещать AURI между полосами.
+                        </p>
+
+
+                        <button
+                            class="game-start-button"
+                            id="game-start"
+                            type="button"
+                        >
+                            ЗАПУСТИТЬ ТЕСТ
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="game-controls">
+
+                    <button
+                        type="button"
+                        id="game-left"
+                        aria-label="Влево"
+                    >
+                        ←
+                    </button>
+
+
+                    <span>
+                        SWIPE / MOVE
+                    </span>
+
+
+                    <button
+                        type="button"
+                        id="game-right"
+                        aria-label="Вправо"
+                    >
+                        →
+                    </button>
+
+                </div>
+
+            </section>
+
+
+
+            <div class="game-test-note">
+
+                <span>
+                    TEST VERSION
+                </span>
+
+                <p>
+                    Это первая механическая версия.
+                    Если сам принцип понравится, сюда добавим
+                    бонусы, DATA FRAGMENTS, комбо, миссии
+                    и разные события системы.
+                </p>
+
+            </div>
+
+
+
+            <footer>
+
+                <span>
+                    AURA / SIGNAL RUN
+                </span>
+
+                <span>
+                    TEST BUILD
                 </span>
 
             </footer>
